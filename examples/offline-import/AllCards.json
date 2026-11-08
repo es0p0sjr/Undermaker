@@ -1,0 +1,67 @@
+{
+  "cards": [
+    {
+      "id": 900001,
+      "name": "Training Monster",
+      "cost": 3,
+      "attack": 2,
+      "health": 4,
+      "description": "Taunt.\nThis is a fictional test card. Use it to check text size, colours and sleeve fit.",
+      "rarity": "COMMON",
+      "type": "MONSTER",
+      "tribes": [
+        "TEST"
+      ],
+      "demo": true,
+      "image": "test-1.png",
+      "statuses": [
+        {
+          "name": "Taunt",
+          "image": "Taunt.png"
+        }
+      ]
+    },
+    {
+      "id": 900002,
+      "name": "Practice Spell",
+      "cost": 2,
+      "description": "Deal 3 damage to a monster.\nFictional rules for testing the spell layout only.",
+      "rarity": "RARE",
+      "type": "SPELL",
+      "soul": "JUSTICE",
+      "demo": true,
+      "image": "test-2.png",
+      "statuses": []
+    },
+    {
+      "id": 900003,
+      "name": "Generated Test Token",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "description": "Keep this card outside your deck.\nA fictional token for testing extra copies.",
+      "rarity": "TOKEN",
+      "type": "MONSTER",
+      "demo": true,
+      "image": "test-3.png",
+      "statuses": []
+    },
+    {
+      "id": 900004,
+      "name": "An Especially Long Name for a Print Layout Test",
+      "cost": 12,
+      "attack": 123,
+      "health": 456,
+      "description": "Start of turn: Gain +2 ATK and +2 HP.\nLast Dream: Add a Generated Test Token to your hand.\nThis deliberately long, fictional description checks wrapping and automatic font sizing. Symbols: + − × / & < >. No words should be omitted from the printed card.",
+      "rarity": "LEGENDARY",
+      "type": "MONSTER",
+      "tribes": [
+        "TEST",
+        "LONG TEXT"
+      ],
+      "demo": true,
+      "image": "test-4.png",
+      "statuses": []
+    }
+  ]
+}

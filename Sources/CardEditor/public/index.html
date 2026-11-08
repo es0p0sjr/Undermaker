@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+    <title>Undercards Template Editor - by feildmaster</title>
+
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./resources/undercards.css" rel="stylesheet"/>
+    <link href="./resources/description.css" rel="stylesheet"/>
+    <link href="./resources/style.css" rel="stylesheet"/>
+    <link href="./resources/legacy.css" rel="stylesheet"/>
+    <link href="./resources/loading.css" rel="stylesheet"/>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RQNLPJ49W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9RQNLPJ49W', {
+        'anonymize_ip': true,
+      });
+
+      function editEvent(type) {
+        gtag('event', `edit_${type}`);
+      }
+    </script>
+
+    <!-- update the version number as needed -->
+    <!--<script defer src="/__/firebase/6.0.2/firebase-app.js"></script>-->
+    <!--<script defer src="/__/firebase/6.0.2/firebase-auth.js"></script>-->
+    <!--<script defer src="/__/firebase/6.0.2/firebase-firestore.js"></script>-->
+    <!-- initialize the SDK after all desired features are loaded -->
+    <!--<script defer src="/__/firebase/init.js"></script>-->
+
+    <script defer src="https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
+    <script defer src="./resources/simpletoast.js"></script>
+    <script type="module" src="./resources/modules/index.js"></script>
+    <script defer nomodule src="./resources/script.js"></script>
+    <script>
+      window.onbeforeunload = () => 'Are you sure?';
+    </script>
+  </head>
+  <body>
+    <div id="loading">
+      <span>
+        <div class="pip"></div>
+        <div class="pip"></div>
+        <div class="pip"></div>
+        <div class="pip"></div>
+        <div class="pip"></div>
+      </span>
+      <div>Loading...</div>
+    </div>
+    <footer class="transparent">
+      <a href="https://undercards.net/SignUp?ref=63068" title="Undercards" target="_blank">Undercards</a> Template Editor
+      &bullet;
+      <a href="https://discord.gg/xgT3X9j" title="Discord" target="_blank">
+        <img src="./resources/social/discord.png" class="social">
+      </a>
+    </footer>
+    <div id="buttons" class="template" legacy>
+      <span class="add">+</span>
+      <button onclick="generate();">Monster</button>
+      <button onclick="generate(false);">Spell</button>
+    </div>
+    <div id="cards" legacy></div>
+    <div class="context template">
+      <li class="close">Close</li>
+      <li class="download">Download Card</li>
+      <li class="delete">Delete Card</li>
+    </div>
+    <div id="descriptionTip" class="template">
+      <h2>Keywords</h2>
+      <div></div>
+      <h2>Custom Keywords</h2>
+      <div>
+        <span>_Words to underline_</span>
+        <span>{Card name}</span>
+        <span>{color|Text}</span>
+        <span>\bypass</span>
+      </div>
+    </div>
+    <dialog id="editor">
+      <div class="helper"></div>
+      <div class="preview"></div>
+      <div class="input"></div>
+    </dialog>
+    <template id="selectSoul">
+      <h2>Change Soul</h2>
+      <span class="selectable active">NONE</span>
+      <span class="selectable KINDNESS">KINDNESS</span>
+      <span class="selectable INTEGRITY">INTEGRITY</span>
+      <span class="selectable PATIENCE">PATIENCE</span>
+      <span class="selectable JUSTICE">JUSTICE</span>
+      <span class="selectable BRAVERY">BRAVERY</span>
+      <span class="selectable PERSEVERANCE">PERSEVERANCE</span>
+      <span class="selectable DETERMINATION">DETERMINATION</span>
+    </template>
+    <template id="selectRarity">
+      <h2>Select Rarity</h2>
+      <div>
+        <img class="selectable" src="./rarity/BASE.png">
+        <img class="selectable extra" src="./rarity/BASE_DR.png">
+        <img class="selectable extra" src="./rarity/BASE_UTY.png">
+        <br class="extra">
+        <img class="selectable" src="./rarity/TOKEN.png">
+        <img class="selectable" src="./rarity/TOKEN_DR.png">
+        <img class="selectable" src="./rarity/TOKEN_UTY.png">
+      </div>
+      <div>
+        <img class="selectable active" src="./rarity/COMMON.png">
+        <img class="selectable" src="./rarity/RARE.png">
+        <img class="selectable" src="./rarity/EPIC.png">
+        <img class="selectable" src="./rarity/LEGENDARY.png">
+        <img class="selectable" src="./rarity/DETERMINATION.png">
+      </div>
+      <div>
+        <img class="selectable" src="./rarity/COMMON_DR.png">
+        <img class="selectable" src="./rarity/RARE_DR.png">
+        <img class="selectable" src="./rarity/EPIC_DR.png">
+        <img class="selectable" src="./rarity/LEGENDARY_DR.png">
+        <img class="selectable" src="./rarity/DETERMINATION_DR.png">
+      </div>
+      <div>
+        <img class="selectable" src="./rarity/COMMON_UTY.png">
+        <img class="selectable" src="./rarity/RARE_UTY.png">
+        <img class="selectable" src="./rarity/EPIC_UTY.png">
+        <img class="selectable" src="./rarity/LEGENDARY_UTY.png">
+        <img class="selectable" src="./rarity/DETERMINATION_UTY.png">
+      </div>
+    </template>
+    <template id="selectTribe">
+      <!-- <h2>Select Tribe</h2> -->
+      <img class="selectable smallerIcon active" src="./resources/tribes/MONSTER.png">
+      <img class="selectable smallIcon"  title="All" src="./resources/tribes/ALL.png">
+    </template>
+    <template id="selectTribeImg">
+      <img class="selectable smallIcon" src="">
+    </template>
+    <template id="groupButtons">
+      <button>Monster</button>
+      <button>Spell</button>
+    </template>
+    <template id="group">
+      <header>
+        <span class="group-name">Default Group</span><input>
+        <span class="sidebar no-save">
+          <span><img class="monster" src="./resources/tribes/MONSTER.png"></span>
+          <span><img class="spell" src="./resources/images/SPELL.png"></span>
+          <span><img class="book" src="./resources/images/GROUP.png"></span>
+          <span><img class="text" src="./resources/images/TEXT.png"></span>
+          <span><i class="sort material-icons">import_export</i></span>
+          <span><i class="save material-icons">save_alt</i></span>
+        </span>
+      </header>
+      <div class="cards"></div>
+    </template>
+    <template id="menu">
+      <div class="menu" popover="auto" onclick="this.hidePopover();">
+        <button class="menu-button material-icons" commandfor="editor" command="show-modal">edit_square</button>
+        <button class="menu-button material-icons">save_alt</button>
+        <button class="menu-button material-icons">delete</button>
+      </div>
+    </template>
+    <template id="card">
+      <div class="card">
+        <div class="top row">
+          <div class="name center-v"></div>
+          <div class="cost center-v center-h"></div>
+        </div>
+        <div class="image">
+          <img class="avatar" src="" />
+          <div class="status"></div>
+          <div class="tribes"></div>
+        </div>
+        <div class="description center-v center-h"></div>
+        <div class="bottom row">
+          <div class="attack center-v center-h"></div>
+          <div class="rarity center-v center-h">
+            <img>
+          </div>
+          <div class="health center-v center-h"></div>
+        </div>
+      </div>
+    </template>
+    <template id="text"></template>
+    <template id="effects"></template>
+  </body>
+</html>

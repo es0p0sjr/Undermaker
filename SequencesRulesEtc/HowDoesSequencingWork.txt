@@ -1,0 +1,14 @@
+Soul:
+	Soul always takes last place in end of turn sequencing
+
+Artifacts:
+	Artifacts are ordered from left to right based on when they were obtained.
+	Artifacts trigger from left to right always.
+
+
+Draw an X card:
+	Excavate cards from top of deck until you find a card that fits the description and shuffle.
+	(makes fail cases take longer but who cares)
+
+Attack all enemies:
+	Always left to right (from your perspective)

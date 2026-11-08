@@ -1,0 +1,1604 @@
+# UC Print
+
+A small tool for converting **Undercards decks and individual cards into print-ready physical cards**.
+
+The goal is to make it easy to play Undercards casually as a physical tabletop card game without manually recreating every card.
+
+The project should reuse live/current Undercards card data wherever practical, render cards at proper print resolution, and generate ready-to-print A4 PDFs.
+
+---
+
+# 1. Project Goal
+
+Build a dedicated **Undercards Physical Card Exporter**.
+
+Primary workflow:
+
+```text
+Paste Undercards deck code
+        ↓
+Decode deck
+        ↓
+Load current card data
+        ↓
+Load card artwork
+        ↓
+Render cards at print resolution
+        ↓
+Add required/generated/token cards
+        ↓
+Arrange cards on A4 sheets
+        ↓
+Export printable PDF
+```
+
+Secondary workflow:
+
+```text
+Search card library
+        ↓
+Select individual cards
+        ↓
+Choose quantity
+        ↓
+Export PNG or printable PDF
+```
+
+The tool should focus on:
+
+* Accurate recreation of Undercards cards.
+* High-quality physical printing.
+* Minimal manual work.
+* Supporting generated/token cards.
+* Supporting complete deck export.
+* Simple local operation.
+* Avoiding unnecessary infrastructure.
+
+This is intended primarily for **personal/non-commercial tabletop use**.
+
+---
+
+# 2. Why Build This
+
+Existing Undercards tools are primarily designed for playing or displaying cards digitally.
+
+The existing community card editor can render and download cards, but its renderer is designed for web-sized images rather than high-quality physical printing.
+
+Current community tooling already demonstrates that Undercards exposes useful data such as:
+
+```text
+https://undercards.net/AllCards
+```
+
+Card artwork is also available through paths similar to:
+
+```text
+https://undercards.net/images/cards/<image>.png
+```
+
+Deck codes are simple Base64-encoded JSON structures containing information such as:
+
+```json
+{
+  "soul": "...",
+  "cardIds": [],
+  "artifactIds": []
+}
+```
+
+Because the underlying data is already accessible, we do not need to manually recreate the Undercards database.
+
+The main task is therefore:
+
+```text
+Undercards Data
+      +
+Print-Quality Renderer
+      +
+Deck Parser
+      +
+PDF Generator
+```
+
+This makes the project relatively small compared to building a complete card-game editor from scratch.
+
+---
+
+# 3. Design Philosophy
+
+The physical version should reproduce Undercards **1-to-1 whenever reasonably possible**.
+
+Do NOT simplify mechanics unnecessarily.
+
+Many effects translate directly to physical cards.
+
+Examples:
+
+```text
+Deal 3 damage.
+```
+
+Works unchanged.
+
+```text
+Summon a Gaster Blaster.
+```
+
+Use a physical Gaster Blaster token card.
+
+```text
+Add a Gaster Blaster to your hand.
+```
+
+Take a Gaster Blaster card from the shared generated-card pool and place it in your hand.
+
+```text
+Transform into X.
+```
+
+Replace the original card with the appropriate generated/token card.
+
+```text
+Gain +2 ATK.
+```
+
+Use a counter/token.
+
+```text
+Silence a monster.
+```
+
+Place a Silence marker on the monster.
+
+````
+
+Only mechanics that fundamentally depend on large-scale computer calculations or huge random card pools should be modified.
+
+Examples that may require physical adaptations:
+
+- Generate a random card from the entire game.
+- Choose a random card satisfying several hidden conditions.
+- Extremely complex random-generation effects.
+- Effects that require searching thousands of possible cards.
+- Effects that rely heavily on invisible game-state bookkeeping.
+
+These should be handled individually later.
+
+---
+
+# 4. Physical Game Assumptions
+
+Initial physical Undercards rules should remain close to the digital game.
+
+Expected components per player:
+
+- 25-card deck.
+- 1 SOUL.
+- Artifact cards.
+- 4 monster spaces.
+- HP tracker.
+- Gold tracker.
+- Dustpile.
+- Status markers.
+- Buff/debuff markers.
+- Generated/token cards.
+- Dice where random selection is needed.
+
+Generated cards should be treated as **real physical cards stored outside the main deck**.
+
+Example:
+
+```text
+PLAYER DECK
+├── 25 normal cards
+├── SOUL
+├── Artifacts
+│
+└── GENERATED / TOKEN POOL
+    ├── Gaster Blaster ×4
+    ├── Token A ×2
+    ├── Token B ×3
+    └── ...
+````
+
+Generated cards should normally return to the token/generated pool when they permanently leave the relevant game zones.
+
+Exact rules can be refined later.
+
+---
+
+# 5. Project Name
+
+Working name:
+
+```text
+UC Print
+```
+
+Possible alternatives:
+
+```text
+Undercards Print
+UC Physical
+UC Printer
+UC Deck Printer
+Undercards Tabletop Tools
+```
+
+Use `UC Print` unless renamed later.
+
+---
+
+# 6. Proposed Architecture
+
+Keep the application deliberately small.
+
+Recommended structure:
+
+```text
+uc-print/
+│
+├── backend/
+│   ├── cmd/
+│   ├── internal/
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── ...
+│
+├── data/
+│   ├── cards/
+│   ├── images/
+│   └── cache/
+│
+├── docs/
+│
+├── output/
+│
+├── README.md
+└── TODO.md
+```
+
+Recommended stack:
+
+```text
+Frontend:
+React
+Vite
+TypeScript
+
+Backend:
+Go
+
+Output:
+PNG
+PDF
+
+Storage:
+Local files / JSON
+```
+
+No database should be required for the first version.
+
+No authentication.
+
+No accounts.
+
+No cloud services.
+
+---
+
+# 7. Backend Responsibilities
+
+The Go backend should remain small.
+
+Responsibilities:
+
+* Fetch Undercards card data.
+* Cache card data locally.
+* Fetch card artwork.
+* Cache artwork locally.
+* Expose card data to frontend.
+* Decode deck codes if desired.
+* Generate print files if PDF generation lives server-side.
+* Protect frontend from CORS limitations.
+* Allow offline use using cached data.
+
+Potential endpoints:
+
+```text
+GET /api/cards
+GET /api/cards/:id
+
+GET /api/cards/search?q=sans
+
+GET /api/images/:image
+
+POST /api/deck/decode
+
+POST /api/export/pdf
+POST /api/export/png
+```
+
+The exact API can change during implementation.
+
+---
+
+# 8. Card Data Source
+
+Investigate and use:
+
+```text
+https://undercards.net/AllCards
+```
+
+Tasks:
+
+* [ ] Fetch `/AllCards`.
+* [ ] Save sample response.
+* [ ] Document every available field.
+* [ ] Determine card ID field.
+* [ ] Determine card name field.
+* [ ] Determine cost field.
+* [ ] Determine ATK field.
+* [ ] Determine HP field.
+* [ ] Determine rarity field.
+* [ ] Determine card type field.
+* [ ] Determine description/effect field.
+* [ ] Determine image field.
+* [ ] Determine tribe/type fields.
+* [ ] Determine whether SOUL restrictions are included.
+* [ ] Determine whether TOKEN cards are included.
+* [ ] Determine whether artifacts are included.
+* [ ] Determine whether localized card text is available.
+* [ ] Determine whether deprecated cards are returned.
+* [ ] Determine whether alternate versions of cards exist.
+* [ ] Document unknown fields.
+
+Create an internal normalized representation.
+
+Example:
+
+```go
+type Card struct {
+    ID          int
+    Name        string
+    Cost        int
+    Attack      *int
+    Health      *int
+    Description string
+    Rarity      string
+    Type        string
+    Image       string
+}
+```
+
+Do not assume this structure exactly matches `/AllCards`.
+
+Normalize external data into our own model.
+
+---
+
+# 9. Artwork
+
+Artwork appears to be available using paths similar to:
+
+```text
+https://undercards.net/images/cards/<image>.png
+```
+
+Tasks:
+
+* [ ] Confirm current artwork URL format.
+* [ ] Confirm image resolutions.
+* [ ] Confirm transparent background behavior.
+* [ ] Confirm whether some cards have different artwork formats.
+* [ ] Create image cache.
+* [ ] Avoid downloading images repeatedly.
+* [ ] Add cache refresh option.
+* [ ] Handle missing artwork gracefully.
+* [ ] Add placeholder artwork for missing files.
+
+Suggested cache:
+
+```text
+data/
+└── images/
+    ├── 1234.png
+    ├── 1235.png
+    └── ...
+```
+
+---
+
+# 10. Deck Code Support
+
+Deck code support is one of the highest-priority features.
+
+Expected workflow:
+
+```text
+User pastes deck code
+        ↓
+Base64 decode
+        ↓
+JSON parse
+        ↓
+Read SOUL
+        ↓
+Read card IDs
+        ↓
+Read artifact IDs
+        ↓
+Resolve IDs using card database
+        ↓
+Display deck
+```
+
+Expected structure resembles:
+
+```json
+{
+  "soul": "...",
+  "cardIds": [],
+  "artifactIds": []
+}
+```
+
+Tasks:
+
+* [ ] Decode real current Undercards deck codes.
+* [ ] Verify exact JSON structure.
+* [ ] Handle malformed Base64.
+* [ ] Handle malformed JSON.
+* [ ] Handle unknown card IDs.
+* [ ] Handle duplicate cards.
+* [ ] Count quantities automatically.
+* [ ] Resolve SOUL.
+* [ ] Resolve artifacts.
+* [ ] Show deck summary.
+* [ ] Validate card count.
+* [ ] Warn when data appears outdated.
+
+Example result:
+
+```text
+JUSTICE
+
+Artifacts
+2x Artifact A
+
+Cards
+2x Froggit
+2x Aaron
+1x Sans
+...
+```
+
+---
+
+# 11. Card Browser
+
+Users should also be able to build print selections manually.
+
+Features:
+
+* [ ] Search by name.
+* [ ] Search by ID.
+* [ ] Filter by rarity.
+* [ ] Filter by card type.
+* [ ] Filter monsters.
+* [ ] Filter spells.
+* [ ] Filter tokens.
+* [ ] Filter artifacts.
+* [ ] Filter generated cards.
+* [ ] Select quantity.
+* [ ] Add card to print queue.
+* [ ] Remove card from print queue.
+* [ ] Show card preview.
+* [ ] Show card raw data for debugging.
+
+Example:
+
+```text
+Search:
+[ Sans________________ ]
+
+Filters:
+[Monster] [Spell] [Token] [Artifact]
+
+--------------------------------
+
+Sans
+
+Cost: 7
+ATK: ...
+HP: ...
+
+[-] 2 [+]       [Add]
+```
+
+---
+
+# 12. Card Renderer
+
+Do NOT simply screenshot the existing Undercards web card at its small web resolution.
+
+The renderer should be designed for printing.
+
+Target physical card size:
+
+```text
+63 × 88 mm
+```
+
+This is approximately standard trading-card size.
+
+At 300 DPI:
+
+```text
+63 mm ≈ 744 px
+88 mm ≈ 1039 px
+```
+
+Therefore recommended base render size:
+
+```text
+744 × 1039 px
+```
+
+Potentially render slightly larger to include bleed.
+
+Example:
+
+```text
+Card size:
+63 × 88 mm
+
+Bleed:
+3 mm
+
+Rendered document:
+69 × 94 mm
+```
+
+At 300 DPI that is approximately:
+
+```text
+815 × 1110 px
+```
+
+Exact dimensions should be calculated properly in code.
+
+---
+
+# 13. Renderer Layout
+
+Approximate card structure:
+
+```text
+┌─────────────────────────┬────┐
+│ CARD NAME               │ G  │
+├──────────────────────────────┤
+│                              │
+│                              │
+│            ART               │
+│                              │
+│                              │
+├──────────────────────────────┤
+│                              │
+│         DESCRIPTION          │
+│                              │
+├───────┬─────────────┬────────┤
+│  ATK  │   RARITY    │   HP   │
+└───────┴─────────────┴────────┘
+```
+
+Renderer needs:
+
+* [ ] Card frame.
+* [ ] Name.
+* [ ] Cost.
+* [ ] Artwork.
+* [ ] Description.
+* [ ] ATK.
+* [ ] HP.
+* [ ] Rarity.
+* [ ] Card type.
+* [ ] Appropriate visual differences between Monster and Spell.
+* [ ] Correct fonts or visually close alternatives.
+* [ ] Correct text wrapping.
+* [ ] Keyword highlighting.
+* [ ] Dynamic font sizing for long descriptions.
+* [ ] Dynamic font sizing for long card names.
+* [ ] High-resolution output.
+* [ ] Transparent/opaque options if useful.
+
+Use the existing community CardEditor as a **visual reference**, not necessarily as the renderer implementation.
+
+---
+
+# 14. Renderer Technology
+
+Evaluate:
+
+### Option A — HTML/CSS + Canvas Export
+
+Pros:
+
+* Easy to reproduce Undercards layout.
+* Easy text layout.
+* Easy preview.
+* Works naturally in React.
+
+Cons:
+
+* Need to ensure proper high-resolution export.
+* Browser rendering differences.
+
+### Option B — HTML Canvas
+
+Pros:
+
+* Exact output dimensions.
+* Strong control over rendering.
+* Easy PNG output.
+
+Cons:
+
+* More manual text/layout work.
+
+### Option C — SVG
+
+Potentially the best option.
+
+Pros:
+
+* Resolution-independent.
+* Excellent for print.
+* Easy scaling.
+* Easy text positioning.
+* Can export SVG directly.
+* Can rasterize to PNG at arbitrary DPI.
+* Good PDF integration.
+
+Cons:
+
+* Requires slightly more custom renderer work.
+
+Preferred direction:
+
+```text
+SVG-based card renderer
+```
+
+unless implementation proves inconvenient.
+
+---
+
+# 15. Print Preview
+
+Provide a preview before generating PDFs.
+
+Example:
+
+```text
+┌──────────────────────────────────────────────┐
+│ PRINT PREVIEW                                │
+├──────────────────────────────────────────────┤
+│                                              │
+│ [ CARD ] [ CARD ] [ CARD ]                  │
+│                                              │
+│ [ CARD ] [ CARD ] [ CARD ]                  │
+│                                              │
+│ [ CARD ] [ CARD ] [ CARD ]                  │
+│                                              │
+│ Page 1 / 3                                   │
+│                                              │
+└──────────────────────────────────────────────┘
+```
+
+Features:
+
+* [ ] Zoom.
+* [ ] Previous page.
+* [ ] Next page.
+* [ ] Show cut lines.
+* [ ] Hide cut lines.
+* [ ] Show bleed.
+* [ ] Show card numbers.
+* [ ] Show front/back preview later.
+
+---
+
+# 16. A4 Printing
+
+Default paper:
+
+```text
+A4
+210 × 297 mm
+```
+
+Default card:
+
+```text
+63 × 88 mm
+```
+
+Target layout:
+
+```text
+3 columns
+×
+3 rows
+=
+9 cards per page
+```
+
+Example:
+
+```text
+┌────────────────────────────────────────┐
+│                                        │
+│  ┌──────┐  ┌──────┐  ┌──────┐        │
+│  │ CARD │  │ CARD │  │ CARD │        │
+│  └──────┘  └──────┘  └──────┘        │
+│                                        │
+│  ┌──────┐  ┌──────┐  ┌──────┐        │
+│  │ CARD │  │ CARD │  │ CARD │        │
+│  └──────┘  └──────┘  └──────┘        │
+│                                        │
+│  ┌──────┐  ┌──────┐  ┌──────┐        │
+│  │ CARD │  │ CARD │  │ CARD │        │
+│  └──────┘  └──────┘  └──────┘        │
+│                                        │
+└────────────────────────────────────────┘
+```
+
+A 25-card deck therefore takes approximately:
+
+```text
+3 A4 pages
+```
+
+excluding artifacts, SOUL, tokens and generated cards.
+
+Tasks:
+
+* [ ] Calculate exact margins.
+* [ ] Calculate exact spacing.
+* [ ] Preserve physical dimensions.
+* [ ] Add cut marks.
+* [ ] Add optional bleed.
+* [ ] Prevent printer scaling issues.
+* [ ] Embed correct physical page size in PDF.
+* [ ] Ensure Print at 100% produces correct dimensions.
+
+---
+
+# 17. PDF Export
+
+Core output:
+
+```text
+deck-name.pdf
+```
+
+Requirements:
+
+* [ ] A4.
+* [ ] Correct physical card size.
+* [ ] 300 DPI equivalent assets.
+* [ ] 9 cards per page.
+* [ ] Cut marks.
+* [ ] Optional bleed.
+* [ ] Exact quantities.
+* [ ] Preserve ordering where requested.
+* [ ] Embed fonts where required.
+* [ ] Do not rasterize unnecessarily.
+* [ ] Test printing at actual size.
+
+PDF options:
+
+```text
+Paper:
+[A4]
+
+Card Size:
+[63 × 88 mm]
+
+Bleed:
+[None]
+[3 mm]
+
+Cut Marks:
+[x]
+
+Include:
+[x] Deck
+[x] SOUL
+[x] Artifacts
+[x] Tokens
+
+Copies:
+[1]
+```
+
+---
+
+# 18. Individual PNG Export
+
+Allow cards to be exported individually.
+
+Example:
+
+```text
+output/
+└── Sans/
+    ├── sans.png
+    └── sans_bleed.png
+```
+
+Requirements:
+
+* [ ] 300 DPI dimensions.
+* [ ] Predictable filenames.
+* [ ] Optional bleed.
+* [ ] Batch ZIP eventually.
+* [ ] Correct transparency/opaque background.
+
+---
+
+# 19. Generated / Token Cards
+
+Generated cards are a core requirement, NOT an edge case.
+
+Examples:
+
+```text
+Gaster Blaster
+Generated monsters
+Generated spells
+Transformation targets
+Special tokens
+```
+
+Users must be able to manually add them.
+
+Example interface:
+
+```text
+GENERATED CARDS
+
+Gaster Blaster
+
+Quantity:
+[-] 4 [+]
+
+[Add to Print]
+```
+
+Tasks:
+
+* [ ] Identify TOKEN cards in Undercards data.
+* [ ] Allow token filtering.
+* [ ] Allow arbitrary token quantities.
+* [ ] Keep tokens outside main deck validation.
+* [ ] Include tokens in print PDF.
+* [ ] Separate generated cards visually in deck summary.
+
+---
+
+# 20. Automatic Generated-Card Dependencies
+
+Later feature.
+
+Some cards should automatically suggest or add the cards they generate.
+
+Example:
+
+```text
+Sans
+└── Generates
+    └── Gaster Blaster
+```
+
+When loading Sans:
+
+```text
+This deck contains cards that generate additional cards.
+
+Recommended physical tokens:
+
+Gaster Blaster ×4
+
+[Add Recommended Tokens]
+```
+
+Do NOT attempt to infer this automatically from arbitrary English card descriptions initially.
+
+Instead maintain a small explicit mapping.
+
+Example:
+
+```json
+{
+  "Sans": [
+    {
+      "card": "Gaster Blaster",
+      "recommendedQuantity": 4
+    }
+  ]
+}
+```
+
+Later investigate whether Undercards exposes generated-card relationships directly.
+
+---
+
+# 21. SOUL Support
+
+SOULs should eventually be printable too.
+
+Tasks:
+
+* [ ] Determine SOUL data source.
+* [ ] Determine SOUL artwork source.
+* [ ] Render SOUL card.
+* [ ] Include SOUL in deck export.
+* [ ] Allow exclusion when players already have physical SOUL cards.
+* [ ] Decide physical SOUL card dimensions.
+
+Potentially keep SOUL card same standard size for simplicity.
+
+---
+
+# 22. Artifact Support
+
+Artifacts should be treated similarly.
+
+Tasks:
+
+* [ ] Determine artifact data structure.
+* [ ] Determine artifact artwork.
+* [ ] Render artifact cards.
+* [ ] Include correct artifact quantities.
+* [ ] Include artifact rules text.
+* [ ] Decide physical layout.
+* [ ] Determine if standard card dimensions work.
+
+---
+
+# 23. Card Backs
+
+Later feature.
+
+Default card back:
+
+```text
+Undercards-inspired back
+```
+
+Requirements:
+
+* [ ] Generic card back.
+* [ ] Optional deck-specific backs.
+* [ ] Printable reverse-side pages.
+* [ ] Correct mirrored page ordering for duplex printing.
+* [ ] Printer alignment calibration.
+
+Do NOT prioritize this for MVP.
+
+For early prototypes users can sleeve printed fronts with:
+
+* Playing cards.
+* MTG commons.
+* Blank cards.
+* Cardboard inserts.
+
+---
+
+# 24. Physical Status Tokens
+
+Not part of the first card-export MVP, but useful later.
+
+Possible printable tokens:
+
+```text
+Taunt
+Silence
+Paralysis
+Charge
+Dodge
+Buff
+Debuff
+ATK modifier
+HP modifier
+Counter
+Turn marker
+Gold
+```
+
+Could generate a separate:
+
+```text
+tokens.pdf
+```
+
+This is lower priority than card printing.
+
+---
+
+# 25. Random Effects
+
+Physical conversion rules should eventually be documented.
+
+Simple random targeting can use dice.
+
+Example:
+
+```text
+4 enemy monsters:
+
+1 = Slot 1
+2 = Slot 2
+3 = Slot 3
+4 = Slot 4
+```
+
+For a d6:
+
+```text
+1 = Slot 1
+2 = Slot 2
+3 = Slot 3
+4 = Slot 4
+5–6 = reroll
+```
+
+Or use a d4 directly.
+
+Random card-generation effects requiring huge card pools may need custom tabletop rules.
+
+Maintain a list:
+
+```text
+docs/
+└── physical-card-conversions.md
+```
+
+Example:
+
+```text
+CARD:
+Example Card
+
+DIGITAL EFFECT:
+Add a random Rare monster to your hand.
+
+PHYSICAL EFFECT:
+To be determined.
+```
+
+Do not change effects until actually necessary.
+
+---
+
+# 26. MVP — Version 0.1
+
+The first usable version should do ONLY the essentials.
+
+## Required
+
+* [ ] Fetch `/AllCards`.
+* [ ] Cache card database.
+* [ ] Fetch card artwork.
+* [ ] Cache card artwork.
+* [ ] Search cards.
+* [ ] Display card preview.
+* [ ] Decode deck code.
+* [ ] Resolve card IDs.
+* [ ] Resolve duplicate quantities.
+* [ ] Show deck list.
+* [ ] Add/remove cards manually.
+* [ ] Add token/generated cards manually.
+* [ ] Render cards at print resolution.
+* [ ] Export individual PNG.
+* [ ] Generate A4 PDF.
+* [ ] 9 cards per A4 page.
+* [ ] Correct 63 × 88 mm card dimensions.
+* [ ] Add cut marks.
+* [ ] Verify real-world printed dimensions.
+
+## Not required for v0.1
+
+* [ ] Accounts.
+* [ ] Database.
+* [ ] Cloud storage.
+* [ ] Automatic token dependency detection.
+* [ ] Card backs.
+* [ ] Duplex printing.
+* [ ] Physical rules engine.
+* [ ] Complete token sheet.
+* [ ] Custom cards.
+* [ ] Full card editor.
+* [ ] Mobile app.
+
+---
+
+# 27. Version 0.2
+
+After basic print export works:
+
+* [ ] SOUL rendering.
+* [ ] Artifact rendering.
+* [ ] Token/generated-card library.
+* [ ] Recommended token dependencies.
+* [ ] Better deck validation.
+* [ ] Better print preview.
+* [ ] Bleed support.
+* [ ] More print layouts.
+* [ ] Letter paper support.
+* [ ] Export entire deck as PNG folder.
+* [ ] Saved local deck configurations.
+* [ ] Refresh Undercards data button.
+
+---
+
+# 28. Version 0.3
+
+Quality-of-life improvements:
+
+* [ ] Card backs.
+* [ ] Duplex printing support.
+* [ ] Calibration page.
+* [ ] Printer alignment offsets.
+* [ ] Token sheets.
+* [ ] Physical rules reference.
+* [ ] Automatic generated-card detection where possible.
+* [ ] Export multiple decks at once.
+* [ ] Offline mode.
+* [ ] Package as standalone desktop app if desirable.
+
+---
+
+# 29. Possible Future Custom Card Editor
+
+Only add this if we actually need custom physical cards.
+
+Potential fields:
+
+```text
+Name
+Cost
+Type
+ATK
+HP
+Rarity
+Artwork
+Description
+Keywords
+SOUL
+```
+
+The same renderer used for official cards should render custom cards.
+
+This should NOT block the initial project.
+
+The primary purpose is exporting **existing Undercards cards**.
+
+---
+
+# 30. User Interface
+
+Suggested initial screen:
+
+```text
+┌────────────────────────────────────────────────────┐
+│ UC PRINT                                           │
+├────────────────────────────────────────────────────┤
+│                                                    │
+│ DECK CODE                                          │
+│ [______________________________________________]   │
+│                                      [Load Deck]   │
+│                                                    │
+├────────────────────────────────────────────────────┤
+│ CARD SEARCH                                        │
+│ [Sans__________________________________________]   │
+│                                                    │
+│ Filters:                                           │
+│ [All] [Monster] [Spell] [Token] [Artifact]        │
+│                                                    │
+├────────────────────────────────────────────────────┤
+│ PRINT LIST                                         │
+│                                                    │
+│ 2× Froggit                                         │
+│ 2× Aaron                                           │
+│ 1× Sans                                            │
+│                                                    │
+│ Generated                                          │
+│ 4× Gaster Blaster                                  │
+│                                                    │
+├────────────────────────────────────────────────────┤
+│ Paper: [A4]                                        │
+│ Card Size: [63 × 88mm]                             │
+│ Cut Marks: [x]                                     │
+│ Bleed: [None ▼]                                    │
+│                                                    │
+│ [Preview]       [Export PNG]       [Export PDF]   │
+└────────────────────────────────────────────────────┘
+```
+
+Keep UI functional and simple.
+
+No unnecessary animations.
+
+---
+
+# 31. Local Cache
+
+Suggested structure:
+
+```text
+data/
+├── cards/
+│   └── cards.json
+│
+├── images/
+│   ├── ...
+│   └── ...
+│
+└── metadata/
+    └── cache.json
+```
+
+Metadata could contain:
+
+```json
+{
+  "lastUpdated": "2026-09-10T20:00:00Z",
+  "source": "https://undercards.net/AllCards"
+}
+```
+
+Features:
+
+* [ ] Load cached cards at startup.
+* [ ] Refresh from server manually.
+* [ ] Refresh automatically when cache is old.
+* [ ] Continue working if Undercards is unavailable.
+* [ ] Do not delete old cache until new download succeeds.
+
+---
+
+# 32. Important Print Tests
+
+Do not assume browser/PDF measurements are correct.
+
+Create a calibration PDF.
+
+Example:
+
+```text
+TEST CARD
+
+Width:
+63.00 mm
+
+Height:
+88.00 mm
+
+Reference square:
+50 × 50 mm
+```
+
+Print with:
+
+```text
+Scale: 100%
+Actual Size
+No "Fit to Page"
+```
+
+Then physically measure.
+
+Tests:
+
+* [ ] Card width is 63 mm.
+* [ ] Card height is 88 mm.
+* [ ] All nine cards fit A4.
+* [ ] Cut marks align correctly.
+* [ ] Text is readable.
+* [ ] Artwork is sharp.
+* [ ] No unexpected PDF scaling.
+* [ ] Sleeve fit is acceptable.
+
+---
+
+# 33. Error Handling
+
+Handle gracefully:
+
+```text
+Invalid deck code
+Unknown card ID
+Missing artwork
+Undercards unavailable
+Malformed card data
+PDF export failure
+Image download failure
+Cache corruption
+Unsupported card type
+```
+
+Example user-facing error:
+
+```text
+Could not find card ID 12345 in the current Undercards card database.
+
+The deck may contain an old or removed card.
+```
+
+Never silently omit cards from a deck export.
+
+---
+
+# 34. Logging
+
+Backend should log useful events.
+
+Example:
+
+```text
+[INFO] Loaded 823 cards from cache
+[INFO] Refreshing Undercards card database
+[INFO] Downloaded image: sans.png
+[INFO] Decoded deck: 25 cards
+[WARN] Missing artwork for card ID 1234
+[INFO] Generated PDF: output/deck.pdf
+```
+
+Avoid excessive debug spam by default.
+
+---
+
+# 35. Testing
+
+Backend tests:
+
+* [ ] Deck Base64 decoding.
+* [ ] JSON parsing.
+* [ ] Duplicate card counting.
+* [ ] Unknown card IDs.
+* [ ] Card data normalization.
+* [ ] Cache reading.
+* [ ] Cache writing.
+* [ ] Failed HTTP requests.
+* [ ] Image caching.
+
+Frontend tests:
+
+* [ ] Search.
+* [ ] Filters.
+* [ ] Quantity selection.
+* [ ] Deck display.
+* [ ] Print queue.
+* [ ] Renderer layout.
+
+Renderer tests:
+
+* [ ] Monster.
+* [ ] Spell.
+* [ ] Token.
+* [ ] Very long name.
+* [ ] Very long description.
+* [ ] Large ATK number.
+* [ ] Large HP number.
+* [ ] Missing artwork.
+* [ ] Special characters.
+* [ ] Keyword formatting.
+
+PDF tests:
+
+* [ ] 1 card.
+* [ ] 9 cards.
+* [ ] 10 cards.
+* [ ] 25 cards.
+* [ ] 50+ cards.
+* [ ] Exact card dimensions.
+* [ ] Multiple pages.
+* [ ] Duplicate quantities.
+
+---
+
+# 36. Research Tasks Before Coding Too Far
+
+* [ ] Inspect real current `/AllCards` response.
+* [ ] Save a representative sample.
+* [ ] Decode several current deck codes.
+* [ ] Confirm current artifact handling.
+* [ ] Confirm current SOUL representation.
+* [ ] Confirm TOKEN representation.
+* [ ] Confirm card artwork URLs.
+* [ ] Inspect existing CardEditor visual implementation.
+* [ ] Identify Undercards fonts.
+* [ ] Identify frame/background assets.
+* [ ] Determine whether frame assets can be reused locally.
+* [ ] Identify cards with unusual layouts.
+* [ ] Identify cards requiring physical-rule conversion.
+* [ ] Test image quality available from Undercards.
+
+---
+
+# 37. First Development Milestone
+
+The first end-to-end success should be:
+
+```text
+1. Start UC Print.
+
+2. Paste a real Undercards deck code.
+
+3. Application successfully identifies all 25 cards.
+
+4. Card artwork is downloaded.
+
+5. Cards are rendered.
+
+6. Duplicate quantities are respected.
+
+7. User manually adds:
+   Gaster Blaster ×4
+
+8. Click:
+   Export PDF
+
+9. Receive:
+   my-deck.pdf
+
+10. Print at 100%.
+
+11. Physical cards measure approximately:
+    63 × 88 mm.
+```
+
+Once this works, the core project is successful.
+
+---
+
+# 38. Development Order
+
+Recommended order:
+
+## Phase 1 — Data
+
+* [ ] Create Go backend.
+* [ ] Fetch `/AllCards`.
+* [ ] Inspect structure.
+* [ ] Normalize card model.
+* [ ] Implement cache.
+* [ ] Implement image download/cache.
+
+## Phase 2 — Decks
+
+* [ ] Implement Base64 deck decoding.
+* [ ] Parse deck JSON.
+* [ ] Resolve card IDs.
+* [ ] Count duplicates.
+* [ ] Display parsed deck in frontend.
+
+## Phase 3 — Renderer
+
+* [ ] Create one Monster card.
+* [ ] Match Undercards visual style.
+* [ ] Add Spell rendering.
+* [ ] Add Token rendering.
+* [ ] Render at correct physical dimensions.
+
+## Phase 4 — Export
+
+* [ ] Export single PNG.
+* [ ] Build A4 layout.
+* [ ] Add nine cards per page.
+* [ ] Add cut marks.
+* [ ] Generate PDF.
+
+## Phase 5 — Physical Test
+
+* [ ] Print test page.
+* [ ] Measure cards.
+* [ ] Correct scaling.
+* [ ] Check sleeve fit.
+* [ ] Check text legibility.
+
+## Phase 6 — Tokens
+
+* [ ] Token browser.
+* [ ] Token quantities.
+* [ ] Generated-card section.
+* [ ] Include tokens in PDF.
+
+## Phase 7 — SOUL + Artifacts
+
+* [ ] Research data.
+* [ ] Implement rendering.
+* [ ] Include in deck exports.
+
+---
+
+# 39. What NOT To Do
+
+Avoid scope creep.
+
+Do NOT initially build:
+
+* Collection management.
+* Booster packs.
+* Player accounts.
+* Multiplayer.
+* Full Undercards game simulation.
+* Matchmaking.
+* Card crafting.
+* Card rarity economy.
+* Server database.
+* Mobile version.
+* Automatic rule interpretation.
+* Complete custom-card editor.
+* Complex cloud infrastructure.
+
+UC Print is a **printing/export utility**, not another Undercards client.
+
+---
+
+# 40. Definition of Done — MVP
+
+UC Print v0.1 is complete when:
+
+* [ ] A valid Undercards deck code can be pasted.
+* [ ] The deck is decoded.
+* [ ] All cards are identified.
+* [ ] Current artwork is loaded.
+* [ ] Cards are rendered at high quality.
+* [ ] Duplicate quantities are correct.
+* [ ] Users can manually add token/generated cards.
+* [ ] Users can search/add individual cards.
+* [ ] A4 sheets contain up to 9 cards.
+* [ ] Cards print at 63 × 88 mm.
+* [ ] Cut marks are available.
+* [ ] Individual PNG export works.
+* [ ] PDF export works.
+* [ ] A complete physical deck can be printed and played.
+
+---
+
+# 41. Core Principle
+
+Whenever deciding how to implement something, follow:
+
+```text
+Can the real Undercards behavior reasonably be represented
+with cards, tokens, counters, markers or dice?
+
+YES
+→ Keep it 1-to-1.
+
+NO
+→ Create the smallest possible physical adaptation.
+```
+
+The goal is not:
+
+```text
+"Create a simplified game inspired by Undercards."
+```
+
+The goal is:
+
+```text
+"Make actual Undercards practical to play physically."
+```
+
+That distinction should guide the entire project.

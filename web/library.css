@@ -1,0 +1,4 @@
+/* Saved artwork is shown without downloading the whole game library. */
+.rules-snippet{font-size:12px;line-height:1.5;margin:5px 0 0;color:#4d5e5b;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mini-icon.art-thumbnail{flex-basis:70px;width:70px;height:46px;padding:0;background:#101519;border-color:#526b60;overflow:hidden}
+.art-thumbnail img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated}

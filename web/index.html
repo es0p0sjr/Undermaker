@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UC Print · Cards to tabletop</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="library.css"><link rel="stylesheet" href="theme.css"><script src="theme.js"></script></head>
+<body>
+<header><div class="brand"><span class="brand-icon">▦</span><div><strong>UC PRINT</strong><span>FROM SCREEN TO TABLETOP</span></div></div><div class="header-actions"><button id="theme-toggle" type="button" aria-pressed="false">Dark mode</button><a class="quiet-link" href="/api/calibration" download>↓ Calibration PDF</a></div></header>
+<main>
+  <div class="intro"><p class="eyebrow">YOUR NEXT GAME, ON PAPER</p><h1>Build a deck. Print. Play.</h1><p>Undercards card fronts, sized for your sleeves. A4 sheets with clean cut marks.</p></div>
+  <div id="notice" class="notice" role="status" aria-live="polite">Loading your card library…</div>
+  <div class="workspace">
+    <section class="library panel">
+      <div class="section-title"><h2>1 <span>Choose your cards</span></h2><span id="source" class="pill">LOCAL</span></div>
+      <p class="hint">Cards, rules and artwork are included in this validated offline snapshot.</p>
+      <p id="snapshot-info" class="hint"></p>
+      <label for="deck-code">Deck code</label><textarea id="deck-code" rows="3" placeholder="Paste your Undercards deck code here…" spellcheck="false"></textarea>
+      <div class="data-actions"><button class="primary" id="load-deck">Load deck</button></div>
+      <p class="hint">Loading a deck replaces the print queue. Generated cards are added separately.</p>
+      <div id="deck-meta" class="hint"></div>
+      <div class="data-actions"><button id="import-reworks">Import reworked PNGs</button><button id="add-reworks">One of each rework</button></div>
+      <p class="hint">Load complete card images listed in ReworkedCards/reworks.json. Their text and frames are printed as supplied.</p>
+      <label for="library-source">Collection</label><select id="library-source"><option value="ALL">All collections</option><option value="OFFICIAL">Official snapshot</option><option value="REWORKED">Reworked PNGs</option></select>
+      <div class="search-row"><div><label for="search">Search library</label><input id="search" type="search" placeholder="Card name, rules text or ID"></div><div><label for="filter">Card type</label><select id="filter"><option value="ALL">All cards</option><option value="MONSTER">Monsters</option><option value="SPELL">Spells</option><option value="TOKEN">Tokens / generated</option></select></div></div>
+      <div class="results-heading"><span id="results-count"></span><select id="rarity" aria-label="Filter by rarity"><option value="ALL">All rarities</option></select></div>
+      <div id="results" class="results"></div>
+      <button id="more" hidden>Show more cards</button>
+    </section>
+    <section class="print panel">
+      <div class="section-title"><h2>2 <span>Prepare your print</span></h2><button id="clear" class="text-button">Clear</button></div>
+      <div class="print-spec"><div><strong>A4</strong><span>PAPER</span></div><div><strong>63 × 88 <small>mm</small></strong><span>CARD SIZE</span></div><div><strong>300 <small>dpi</small></strong><span>RESOLUTION</span></div></div>
+      <div id="queue" class="queue"><p class="empty">Your print queue is empty.<br>Add cards from the library or load your deck code.</p></div>
+      <div id="summary" class="summary">0 cards · 0 sheets</div>
+      <label class="check"><input id="cut-marks" type="checkbox" checked> Include cut marks</label>
+      <p class="hint">Fronts only. SOULs and artifacts need separate rules references. No bleed or card backs in this version.</p>
+      <div class="export-actions"><button id="preview" disabled>Preview sheets</button><button id="export" class="primary" disabled>↓ Export PDF</button></div>
+      <div id="export-result" aria-live="polite"></div>
+      <p class="print-reminder"><strong>Print at 100% / Actual Size.</strong><br>Choose A4 and turn off “Fit to page”. Test the calibration PDF before printing a whole deck.</p>
+    </section>
+  </div>
+  <section id="sheets-panel" class="panel sheets-panel" hidden><div class="section-title"><h2>Print preview</h2><div><button id="prev-page" aria-label="Previous sheet">←</button> <span id="page-label"></span> <button id="next-page" aria-label="Next sheet">→</button></div></div><p id="preview-notes" class="hint"></p><div id="sheet" class="sheet"></div></section>
+</main>
+<footer>UC Print · Local, personal-use print utility · Not affiliated with Undercards</footer>
+<dialog id="card-dialog"><button id="close-dialog" class="dialog-close" aria-label="Close preview">×</button><label for="art-variant">Artwork</label><select id="art-variant"><option value="">Standard artwork</option></select><p id="art-hint" class="hint"></p><div id="card-preview"></div><p id="card-notes" class="hint"></p><button id="png" class="primary">↓ Download PNG · 300 dpi</button><details><summary>Card data</summary><pre id="raw"></pre></details></dialog>
+<script type="module" src="app.js"></script>
+</body></html>

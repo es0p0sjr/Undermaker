@@ -1,0 +1,15 @@
+{
+    "scripts": {
+        "deploy": "firebase deploy --only hosting -m",
+        "test": "firebase deploy --only hosting --project test -m",
+        "start": "firebase serve --host 0.0.0.0 --only hosting"
+    },
+    "private": true,
+    "dependencies": {
+        "node-fetch": "^2.6.7"
+    },
+    "devDependencies": {
+        "@underscript/eslint-config": "^1.0.1",
+        "eslint": "^8.49.0"
+    }
+}

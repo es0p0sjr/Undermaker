@@ -1,0 +1,16 @@
+.underline { text-decoration: underline; }
+.COST, .RARE { color: rgb(0, 184, 255); }
+.gold, .LEGENDARY { color: rgb(255, 215, 0); }
+.DETERMINATION, .attack, .DT { color: rgb(255, 0, 0); }
+.KINDNESS, .health, .GENERATED, .TOKEN { color: rgb(0, 192, 0); }
+.JUSTICE, .damage { color: rgb(255, 255, 0); }
+.PERSEVERANCE, .poison, .EPIC { color: rgb(213, 53, 217); }
+.PATIENCE, .cardName { color: rgb(65, 252, 255); }
+.BRAVERY { color: rgb(252, 165, 0); }
+.INTEGRITY { color: rgb(0, 59, 255); }
+.COMMON { color: rgb(255, 255, 255); }
+.BASE { color: rgb(128, 128, 128); }
+
+.selectable { cursor: pointer; }
+.selectable.active { font-weight: bold; text-decoration: underline; }
+img.selectable.active { }

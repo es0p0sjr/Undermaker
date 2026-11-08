@@ -1,0 +1,12 @@
+How to handle "Random" cards
+ DONE
+
+How to handle "Generate" cards
+ DONE
+
+How to handle handbuffs
+
+	Place on the side a card which will be buffed, place counters on it to buff it
+	
+	Cards lose their buffs when they leave the hand
+

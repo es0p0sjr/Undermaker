@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rework Studio</title><link rel="stylesheet" href="/studio.css"></head>
+<body>
+<header><div><span class="eyebrow">UNDERCARDS · PHYSICAL EDITION</span><h1>Rework Studio</h1><p>Your rules. Ready for the table.</p></div><button id="backup">Download reworks JSON</button></header>
+<main>
+<aside><div class="section-title"><h2>Your reworks</h2><span id="count"></span></div><input id="search" type="search" placeholder="Find a card…" aria-label="Find a card"><div id="cards"></div></aside>
+<section class="workspace">
+<div id="notice" role="status" aria-live="polite">Loading your cards…</div>
+<div class="section-title"><h2 id="title">Card editor</h2><span id="state"></span></div>
+<div class="editor">
+<form id="form"><label>Name<input id="name" maxlength="100" required></label><div class="stats"><label>Cost<input id="cost" type="number" min="0" max="999" required></label><label>Attack<input id="attack" type="number" min="0" max="999" required></label><label>Health<input id="health" type="number" min="0" max="999" required></label></div>
+<div class="stats"><label>Rarity<select id="rarity"><option>COMMON</option><option>RARE</option><option>EPIC</option><option>LEGENDARY</option><option>DETERMINATION</option><option>TOKEN</option><option>GENERATED</option></select></label><label>Expansion<select id="extension"><option value="BASE">Undertale</option><option value="DELTARUNE">Deltarune</option><option value="UTY">Undertale Yellow</option></select></label></div>
+<label>Rules<textarea id="description" rows="7" maxlength="4000"></textarea></label>
+<details><summary>Status icons</summary><p class="muted">Select the icons shown above the artwork. Counters are optional.</p><div id="statuses"></div></details>
+<label class="check"><input id="reviewed" type="checkbox">I checked this version against my reference</label>
+<div class="actions"><button type="submit" class="primary">Save rework</button><button id="png" type="button">Download PNG</button><button id="revert" type="button">Discard unsaved edits</button></div>
+<details><summary>Official card for comparison</summary><p id="official-stats"></p><p id="official-rules"></p></details>
+</form>
+<div class="previews"><figure><figcaption>PRINT PREVIEW <span>744 × 1039 · 300 DPI</span></figcaption><div id="preview"></div><p id="warnings" class="muted"></p></figure><figure class="reference"><figcaption>YOUR REFERENCE PNG</figcaption><img id="reference" alt="Original reworked card reference"><p class="muted">The preview renders your saved card data, including tribe badges. Keyword colors are not yet reproduced.</p></figure></div>
+</div>
+<section class="print-panel"><div class="section-title"><h2>Print collection</h2><span id="total">0 cards</span></div><p class="muted">Set quantities beside the cards. Export uses saved reworks.</p><div class="actions"><button id="all">One of each</button><button id="clear">Clear quantities</button><label class="check"><input id="cuts" type="checkbox" checked>Cut marks</label><button id="pdf" class="primary">Export A4 PDF</button></div><p id="export-links"></p><p class="muted">63 × 88 mm cards · 9 per A4 sheet · Print at Actual Size / 100%</p></section>
+</section>
+</main><script type="module" src="/studio.js"></script>
+</body></html>

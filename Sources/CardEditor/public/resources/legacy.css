@@ -1,0 +1,32 @@
+#cards {
+  padding-bottom: 40px;
+}
+
+#buttons {
+  display: none;
+  text-align: right;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+#buttons * {
+  float: right;
+  clear: both;
+}
+
+#buttons button {
+  display: none;
+}
+
+#buttons:hover button {
+  display: block;
+}
+
+.add {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 26px;
+  text-align: center;
+  font-size: x-large;
+}

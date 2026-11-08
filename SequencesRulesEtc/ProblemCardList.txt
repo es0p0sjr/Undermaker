@@ -1,0 +1,63 @@
+Random Gen Section
+===============
+Maus Hole -> Draw a 1-cost monster
+Certificate -> Draw a taunt monster
+Tutorial Guy -> Delete
+Bone Box -> Delete
+Rudinn -> Draw a Deltarune Monster, If you drew one with G equal to 2-4 draw a second one.
+Trader Temmie -> Delay: Add a Temmie 2 to your hand. Shock: Trigger this card's Delay.
+Disco Ball -> Delete
+Faun -> Magic: Give an enemy monster -2 ATK. Draw a card with Cost equal to its new ATK.
+Frisk Laser -> Delete
+Lady Garf -> Look at the bottom 5 cards of your deck. Draw one of them
+Noelle -> Magic: Look at EPIC spells of your SOUL. Add one to your hand. Your next spell costs -2
+Well -> Turn end: Program (3) Add a Undertale Yellow Legendary from your dustpile to your hand
+Clam Boy -> Delete
+Easy to Draw Bed -> After this Attacks swap it with a monster in your hand with less cost than this. It becomes a 4/6
+Librarian -> Need: same Draw 3 cards, then shuffle 4 random non DT cards from your dustpile into your deck
+Red Bird -> Delete
+Bratty -> Delete
+CASINO SANS -> Delete
+Guei -> Trigger dust from dustpile (up to cost 3)
+Mo -> Magic: Earn 8G. If you spend G on the rest of your turn your opponent also gains that much gold Delay: Lose 8 G. 
+Snowy -> Add 2 Change of Winds instead
+Stuffed Doll -> Delete
+TV -> Change
+EL UNDERCARDIO -> Packs resolved
+Gachapon Machine -> Delete
+Large Chest -> Add 6 Random non-DT monsters from your dustpile (-2/+1/+1)
+Elimination Duck -> turn all other creatures into APOCA ducks
+Gerson (Junk for Sale)* -> old gerson version
+Dog Slots (Arcane Codes) -> High Low minigame
+Ultimathrash (Recruit)* -> Add all parts from your dustpile into your hand and any that dont fit in the deck 
+Soulless Kris -> Magic: equip the Dark World and Erase your dustpile 
+	Dark World: All your monsters that would die are Erased instead. Gains 1 counter for every monster erased. Deltarune monsters you control that have a cost more that the counters on Dark World or where summoned by it have +2/+2
+	Turn start:
+			If Dark World has 0 Counters Disable it. Spend:
+				Choose one:
+				3: Summon a Deltarune Common/Rare Monster from your erased zone.
+				5: Summon a Deltarune Epic/Legendary Monster from your erased zone.
+				15: Summon a Titan and trigger its Magic. Disable this Artifact.
+	
+Noellecoaster -> Delete
+Royal Signup -> Draft/Recruit Problem
+Cardmaster -> Draft/Recruit Problem
+
+Garbage -> No changes actually
+Traffic Light* -> Artifact -2 cost to next LEG, DT and TOKEN then disable this.
+RECRUIT/Draft -> Draft Artifact: Starts with 0 Counters. Gain +1 when you Recruit/Draft. Turn Start: Spend 4 counters, Summon the next 
+non-DT 9-cost Royal Guard with -4/-4 base stats
+
+Blue Snail -> Next snail you play costs 1 less
+
+Packs: Erase 4 cards from dustpile (At random) -> pile -> put 1 in your hand, erase the rest, Cards from packs erase themselves instead of
+dying
+
+
+==========================================
+HOLY SHIT HOW MANY ARE YOU?
+
+Flowey
+Snowman
+
+how to potentially solve the flowey problem: add the original back to the hand (with the stamps for stat changes) and add a token to the dustpile

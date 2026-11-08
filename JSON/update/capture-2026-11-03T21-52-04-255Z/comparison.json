@@ -1,0 +1,1442 @@
+{
+  "capture": "JSON\\update\\capture-2026-11-03T21-52-04-255Z",
+  "previousCount": 931,
+  "updatedCount": 951,
+  "added": [
+    {
+      "id": 994,
+      "name": "Woshing Soap"
+    },
+    {
+      "id": 995,
+      "name": "Cotton Madness"
+    },
+    {
+      "id": 996,
+      "name": "Magic Dummy"
+    },
+    {
+      "id": 997,
+      "name": "Dummy Bot"
+    },
+    {
+      "id": 998,
+      "name": "Flee!"
+    },
+    {
+      "id": 999,
+      "name": "White Flower"
+    },
+    {
+      "id": 1000,
+      "name": "Armored Undyne"
+    },
+    {
+      "id": 1001,
+      "name": "Balthizard"
+    },
+    {
+      "id": 1002,
+      "name": "The Tropical"
+    },
+    {
+      "id": 1003,
+      "name": "Sousborg"
+    },
+    {
+      "id": 1004,
+      "name": "Addison"
+    },
+    {
+      "id": 1005,
+      "name": "Steam Vent"
+    },
+    {
+      "id": 1006,
+      "name": "Bibliox"
+    },
+    {
+      "id": 1007,
+      "name": "Shuttah"
+    },
+    {
+      "id": 1008,
+      "name": "Titan Maw"
+    },
+    {
+      "id": 1009,
+      "name": "Sweet"
+    },
+    {
+      "id": 1010,
+      "name": "Cakes"
+    },
+    {
+      "id": 1011,
+      "name": "Hermit"
+    },
+    {
+      "id": 1012,
+      "name": "Dina"
+    },
+    {
+      "id": 1013,
+      "name": "Cap'n"
+    }
+  ],
+  "removed": [],
+  "changed": [
+    {
+      "id": 21,
+      "name": "Tsunderplane",
+      "changes": {
+        "cost": {
+          "before": 7,
+          "after": 6
+        },
+        "attack": {
+          "before": 6,
+          "after": 5
+        },
+        "health": {
+          "before": 4,
+          "after": 3
+        },
+        "description": {
+          "before": "Haste. Magic: Deal 1 DMG to all enemy monsters and 3 DMG to the opponent.",
+          "after": "Haste. Magic: Deal 1 DMG to all enemy monsters and 2 DMG to the opponent."
+        }
+      }
+    },
+    {
+      "id": 26,
+      "name": "Parsnik",
+      "changes": {
+        "description": {
+          "before": "Magic: Paralyze a monster. If it was already Paralyzed, deal 2 DMG to it.",
+          "after": "Magic: Paralyze a monster. If it's already Paralyzed, deal 2 DMG to it."
+        }
+      }
+    },
+    {
+      "id": 33,
+      "name": "Endogeny",
+      "changes": {
+        "tribes": {
+          "before": [
+            "Dog",
+            "Amalgamate"
+          ],
+          "after": [
+            "Amalgamate",
+            "Dog"
+          ]
+        }
+      }
+    },
+    {
+      "id": 34,
+      "name": "Reaper Bird",
+      "changes": {
+        "tribes": {
+          "before": [
+            "Frog",
+            "Amalgamate"
+          ],
+          "after": [
+            "Amalgamate",
+            "Frog"
+          ]
+        }
+      }
+    },
+    {
+      "id": 35,
+      "name": "Lemon Bread",
+      "changes": {
+        "attack": {
+          "before": 5,
+          "after": 3
+        },
+        "health": {
+          "before": 7,
+          "after": 9
+        },
+        "description": {
+          "before": "Magic: If you played a Mold or Amalgamate last turn, gain Haste. If 2+, gain Candy. If 3+, gain +2 ATK.",
+          "after": "Taunt. Magic: Give all enemy monsters +1 Mold Spore for every Mold or Amalgamate you played this turn."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Taunt",
+              "image": "Taunt.png"
+            }
+          ]
+        },
+        "tribes": {
+          "before": [
+            "Mold",
+            "Amalgamate"
+          ],
+          "after": [
+            "Amalgamate",
+            "Mold"
+          ]
+        }
+      }
+    },
+    {
+      "id": 36,
+      "name": "Snowdrake's Mom",
+      "changes": {
+        "description": {
+          "before": "Taunt. Delay: Summon a Vegetoid. Give it +1 ATK/+1 HP and Transparency if this has any ATK buffs.",
+          "after": "Taunt. Delay: Summon a Vegetoid. Give it +1 ATK/+1 HP and Transparency if this has ATK buffs."
+        },
+        "tribes": {
+          "before": [
+            "Plant",
+            "Amalgamate"
+          ],
+          "after": [
+            "Amalgamate",
+            "Plant"
+          ]
+        }
+      }
+    },
+    {
+      "id": 40,
+      "name": "Annoying Dog",
+      "changes": {
+        "description": {
+          "before": "Taunt. Delay: Add a Dog Residue to your hand. If this has ATK buffs, add another.",
+          "after": "Taunt. Magic: Add a Dog Residue to your hand. Delay: If this has ATK buffs, add another."
+        }
+      }
+    },
+    {
+      "id": 49,
+      "name": "Glyde",
+      "changes": {
+        "cost": {
+          "before": 6,
+          "after": 5
+        },
+        "attack": {
+          "before": 2,
+          "after": 3
+        },
+        "health": {
+          "before": 2,
+          "after": 3
+        },
+        "description": {
+          "before": "Magic: Gain +1 ATK/+1 HP for each card in your hand.",
+          "after": "Haste. Taunt. Magic: Steal 1 ATK/1 HP from every monster in your hand (min. 1 HP). Program (4): Target the enemy hand instead."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Program",
+              "counter": 4,
+              "image": "Program.png"
+            },
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            },
+            {
+              "name": "Taunt",
+              "image": "Taunt.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 55,
+      "name": "Muffet",
+      "changes": {
+        "description": {
+          "before": "Haste. Delay: Add a Spider Donut to your hand and a Spider Croissant to your deck. Turn end: Add another Spider Donut.",
+          "after": "Haste. Magic: Add a Spider Donut to your hand and a Spider Croissant to your deck. Turn end: Add another Spider Donut."
+        }
+      }
+    },
+    {
+      "id": 75,
+      "name": "Self Reflection",
+      "changes": {
+        "description": {
+          "before": "Paralyze a monster. Delay: If it was an ally, give it Candy and +1 ATK/+1 HP. If it was an enemy, add a True Self to your hand.",
+          "after": "Paralyze a monster. Delay: If it's an ally, give it Candy and +1 ATK/+1 HP. If it's an enemy, add a True Self to your hand."
+        }
+      }
+    },
+    {
+      "id": 81,
+      "name": "Fortune",
+      "changes": {
+        "cost": {
+          "before": 0,
+          "after": 1
+        },
+        "description": {
+          "before": "Both players earn 1 GOLD.",
+          "after": "Earn 2 GOLD. The opponent earns 1 GOLD."
+        }
+      }
+    },
+    {
+      "id": 89,
+      "name": "Pollutant Spores",
+      "changes": {
+        "name": {
+          "before": "Pollutant Gas",
+          "after": "Pollutant Spores"
+        },
+        "description": {
+          "before": "Summon 2 Toxic Clouds.",
+          "after": "Summon 2 Toxic Spores."
+        },
+        "image": {
+          "before": "Pollutant_Gas.png",
+          "after": "Pollutant_Spores.png"
+        }
+      }
+    },
+    {
+      "id": 109,
+      "name": "Everyman",
+      "changes": {
+        "cost": {
+          "before": 6,
+          "after": 5
+        },
+        "attack": {
+          "before": 5,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 132,
+      "name": "Pie",
+      "changes": {
+        "description": {
+          "before": "Loop (1). Fully heal a monster. If it was already full, give it +2 HP instead.",
+          "after": "Loop (1). Fully heal a monster. If it's already full, give it +2 HP instead."
+        }
+      }
+    },
+    {
+      "id": 135,
+      "name": "Big Mouth",
+      "changes": {
+        "description": {
+          "before": "Magic and Turn start: Kill a random enemy monster costing 2 or less GOLD to heal 2 HP to you.",
+          "after": "Magic and Turn start: Kill a random enemy monster costing 2 or less GOLD to heal 3 HP to you."
+        }
+      }
+    },
+    {
+      "id": 154,
+      "name": "River Person",
+      "changes": {
+        "description": {
+          "before": "Magic: Both players draw cards until they have 6 in their hand.",
+          "after": "Transparency. Magic: Both players draw cards until they have 6 in their hand."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Transparency",
+              "image": "Transparency.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 161,
+      "name": "Clam Girl",
+      "changes": {
+        "health": {
+          "before": 4,
+          "after": 5
+        }
+      }
+    },
+    {
+      "id": 178,
+      "name": "Overheat",
+      "changes": {
+        "cost": {
+          "before": 5,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 192,
+      "name": "Big Bomb",
+      "changes": {
+        "description": {
+          "before": "Magic: Add 3 Mines to the enemy deck.",
+          "after": "Magic: Add 3 Explosions to the enemy deck."
+        }
+      }
+    },
+    {
+      "id": 214,
+      "name": "Casual Undyne",
+      "changes": {
+        "description": {
+          "before": "Haste. After this deals DMG to a monster, deal excess DMG to the opponent.",
+          "after": "Haste. Whenever this attacks and kills a monster, deal excess DMG to its adjacent monsters. Bullseye: Summon a Spear. It attacks the opponent."
+        },
+        "statuses": {
+          "before": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            }
+          ],
+          "after": [
+            {
+              "name": "Bullseye",
+              "image": "Bullseye.png"
+            },
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 216,
+      "name": "Fire Trap",
+      "changes": {
+        "attack": {
+          "before": 1,
+          "after": 4
+        },
+        "description": {
+          "before": "Turn end: Deal DMG to the opponent equal to the number of turns this has survived.",
+          "after": "Turn start: Enchant a random enemy slot with The Flame."
+        }
+      }
+    },
+    {
+      "id": 236,
+      "name": "Hot Dog Vulkin",
+      "changes": {
+        "attack": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 245,
+      "name": "Scarf Lady",
+      "changes": {
+        "health": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 246,
+      "name": "Lady Garf",
+      "changes": {
+        "health": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 247,
+      "name": "Dress Lion",
+      "changes": {
+        "name": {
+          "before": "Suit Lion",
+          "after": "Dress Lion"
+        },
+        "health": {
+          "before": 4,
+          "after": 5
+        },
+        "description": {
+          "before": "Turbo: Gain +1 ATK. Magic: Silence an enemy monster with as much or less ATK than this.",
+          "after": "Haste. Transparency. Turbo: Gain +1 ATK."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            },
+            {
+              "name": "Transparency",
+              "image": "Transparency.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 250,
+      "name": "Hot Dog Harpy",
+      "changes": {
+        "description": {
+          "before": "Magic: Silence an enemy monster. If it was already Silenced, kill it instead.",
+          "after": "Magic: Silence an enemy monster. If it's already Silenced, kill it instead."
+        }
+      }
+    },
+    {
+      "id": 255,
+      "name": "Overgrowth",
+      "changes": {
+        "cost": {
+          "before": 3,
+          "after": 2
+        },
+        "description": {
+          "before": "Give all Generated ally monsters +1 ATK/+1 HP wherever they are. Draw a card.",
+          "after": "Give all ally Generated monsters +1 ATK/+1 HP wherever they are."
+        }
+      }
+    },
+    {
+      "id": 260,
+      "name": "Ice Replica",
+      "changes": {
+        "description": {
+          "before": "Paralyze a non-DT monster and add a copy of it to your hand. Delay: If it was an ally, give it -2 COST.",
+          "after": "Paralyze a non-DT monster and add a copy of it to your hand. Delay: If it's an ally, give it -2 COST."
+        }
+      }
+    },
+    {
+      "id": 266,
+      "name": "Clover Hydra",
+      "changes": {
+        "description": {
+          "before": "Haste. Magic: Deal 3 DMG, draw 3 cards, and heal 3 HP to you.",
+          "after": "Charge. Magic: Deal 3 DMG, heal 3 HP to you and draw 3 cards with -1 COST."
+        },
+        "statuses": {
+          "before": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            }
+          ],
+          "after": [
+            {
+              "name": "Charge",
+              "image": "Charge.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 271,
+      "name": "Chaos Duck",
+      "changes": {
+        "health": {
+          "before": 4,
+          "after": 5
+        }
+      }
+    },
+    {
+      "id": 290,
+      "name": "Snowy",
+      "changes": {
+        "cost": {
+          "before": 6,
+          "after": 2
+        },
+        "attack": {
+          "before": 5,
+          "after": 2
+        },
+        "health": {
+          "before": 6,
+          "after": 2
+        },
+        "description": {
+          "before": "Magic: Deal 2 DMG. If the target dies, add a random spell of the same COST to your hand.",
+          "after": "Magic: Deal 1 DMG. If the target dies, add a random spell of the same COST to your hand."
+        }
+      }
+    },
+    {
+      "id": 367,
+      "name": "Explosion",
+      "changes": {
+        "name": {
+          "before": "Mine",
+          "after": "Explosion"
+        },
+        "image": {
+          "before": "Mine.png",
+          "after": "Explosion.png"
+        }
+      }
+    },
+    {
+      "id": 472,
+      "name": "Seam",
+      "changes": {
+        "description": {
+          "before": "Taunt. Need: No non-Generated LEGENDARY monsters in your deck or dustpile. Magic: Add 2 Shadow Crystals to your hand.",
+          "after": "Taunt. Need: Your starting deck has no other LEGENDARY monsters. Magic: If this is the first time you play this, add 2 Shadow Crystals to your hand."
+        }
+      }
+    },
+    {
+      "id": 477,
+      "name": "Spider Flower",
+      "changes": {
+        "cost": {
+          "before": 3,
+          "after": 2
+        },
+        "health": {
+          "before": 3,
+          "after": 2
+        },
+        "tribes": {
+          "before": [
+            "Plant",
+            "Arachnid"
+          ],
+          "after": [
+            "Arachnid",
+            "Plant"
+          ]
+        }
+      }
+    },
+    {
+      "id": 479,
+      "name": "Fly",
+      "changes": {
+        "cost": {
+          "before": 4,
+          "after": 7
+        },
+        "attack": {
+          "before": 3,
+          "after": 4
+        },
+        "health": {
+          "before": 1,
+          "after": 7
+        }
+      }
+    },
+    {
+      "id": 486,
+      "name": "Royal Integrity",
+      "changes": {
+        "description": {
+          "before": "Add an exact copy of a monster (except Alphys) to your hand. If it was LEGENDARY or DT, give it +2 COST.",
+          "after": "Add an exact copy of a monster (except Alphys) to your hand. If it's LEGENDARY or DT, give it +2 COST."
+        }
+      }
+    },
+    {
+      "id": 487,
+      "name": "Royal Justice",
+      "changes": {
+        "cost": {
+          "before": 2,
+          "after": 1
+        },
+        "description": {
+          "before": "Add 1 of every non-TOKEN JUSTICE spell you cast this game to your hand. They COST 1 less.",
+          "after": "Loop (5). Deal 1 DMG to a monster. Bullseye: Earn 1 GOLD."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Bullseye",
+              "image": "Bullseye.png"
+            },
+            {
+              "name": "Loop",
+              "counter": 5,
+              "image": "Loop.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 492,
+      "name": "Burning Snail",
+      "changes": {
+        "attack": {
+          "before": 0,
+          "after": 1
+        },
+        "description": {
+          "before": "Haste. Magic: Gain +1 ATK for each other ally Snail.",
+          "after": "Haste. Magic: Gain +1 ATK for each adjacent ally Snail."
+        }
+      }
+    },
+    {
+      "id": 497,
+      "name": "Fire Chimney",
+      "changes": {
+        "cost": {
+          "before": 2,
+          "after": 3
+        },
+        "attack": {
+          "before": 2,
+          "after": 3
+        },
+        "health": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 523,
+      "name": "Snoring Monsters",
+      "changes": {
+        "description": {
+          "before": "After this kills a monster, gain +3 ATK. Magic: Deal 4 DMG to a monster.",
+          "after": "After this kills a monster, gain +3 ATK. Magic: Deal 4 DMG."
+        }
+      }
+    },
+    {
+      "id": 526,
+      "name": "Plated Pipe",
+      "changes": {
+        "description": {
+          "before": "This takes 1 less DMG during the enemy turn. After this takes DMG, deal 1 DMG to the opponent.",
+          "after": "Armor. After this takes DMG, deal 1 DMG to the opponent."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Armor",
+              "image": "Armor.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 531,
+      "name": "Teacher Toriel",
+      "changes": {
+        "description": {
+          "before": "Magic: Look at the enemy hand. Choose a card to send to the enemy deck.",
+          "after": "Magic: Look at the enemy hand. Choose a card to send to the enemy deck with +1 COST."
+        }
+      }
+    },
+    {
+      "id": 563,
+      "name": "Iced Butterfly",
+      "changes": {
+        "description": {
+          "before": "Magic: Summon an Iced Butterfly.",
+          "after": "Magic: Summon an Iced Butterfly with +1 HP."
+        }
+      }
+    },
+    {
+      "id": 567,
+      "name": "Blowing Rabbick",
+      "changes": {
+        "description": {
+          "before": "After you spend GOLD on spells, return to your hand with +1 ATK/+1 HP (keeps ATK and HP buffs).",
+          "after": "After you spend GOLD on spells, return to your hand with +2 ATK/+1 HP (keeps ATK and HP buffs)."
+        }
+      }
+    },
+    {
+      "id": 600,
+      "name": "Bag o' Goodies",
+      "changes": {
+        "description": {
+          "before": "Magic: Look at 3 spells costing 2+ GOLD. Choose one to add to your hand with -1 COST for each Gemstone you cast this turn. Shock: Add a Gemstone to your hand.",
+          "after": "Magic: Look at 3 random spells costing 2+ GOLD. Choose one to add to your hand with -1 COST for each Gemstone you cast this turn. Shock: Add a Gemstone to your hand."
+        }
+      }
+    },
+    {
+      "id": 615,
+      "name": "Toxic Spores",
+      "changes": {
+        "name": {
+          "before": "Toxic Cloud",
+          "after": "Toxic Spores"
+        },
+        "description": {
+          "before": "Taunt. Haste. Dust: Give its killer KR and -1 ATK/-1 HP.",
+          "after": "Haste. Dust: Give its killer +1 Mold Spore, KR and -1 ATK/-1 HP."
+        },
+        "image": {
+          "before": "Toxic_Cloud.png",
+          "after": "Toxic_Spores.png"
+        },
+        "statuses": {
+          "before": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            },
+            {
+              "name": "Taunt",
+              "image": "Taunt.png"
+            }
+          ],
+          "after": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 619,
+      "name": "Maus Hole",
+      "changes": {
+        "description": {
+          "before": "Magic: Look at 3 random different non-DT 1-COST cards. Choose one to add to your hand.",
+          "after": "Magic: Look at 3 random non-DT 1-COST cards. Choose one to add to your hand."
+        }
+      }
+    },
+    {
+      "id": 639,
+      "name": "Alterman",
+      "changes": {
+        "description": {
+          "before": "Taunt. Magic: Erase an ally monster to gain +3 HP.",
+          "after": "Magic: Switch: Silence and kill an ally monster to gain +3 HP and Taunt or +2 ATK and Haste."
+        },
+        "statuses": {
+          "before": [
+            {
+              "name": "Taunt",
+              "image": "Taunt.png"
+            }
+          ],
+          "after": []
+        }
+      }
+    },
+    {
+      "id": 646,
+      "name": "Glitch",
+      "changes": {
+        "cost": {
+          "before": 4,
+          "after": 9
+        },
+        "attack": {
+          "before": 3,
+          "after": 9
+        },
+        "description": {
+          "before": "Magic: Switch: Gain +2 ATK or +2 HP. If played at the center of the board, swap its stats.",
+          "after": "FloweryPower\nMoldSpore (0)\nKR. Mold Spore (0). Charge. Haste. Armor. Disarmed. Candy. Transparency. Taunt. Dodge (1). Wanted. Darkspawn. Flowery Power. Invulnerable for one turn."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "KR",
+              "image": "KR.png"
+            },
+            {
+              "name": "MoldSpore",
+              "counter": 0,
+              "image": "MoldSpore.png"
+            },
+            {
+              "name": "FloweryPower",
+              "image": "FloweryPower.png"
+            },
+            {
+              "name": "Invulnerable",
+              "image": "Invulnerable.png"
+            },
+            {
+              "name": "Dodge",
+              "counter": 1,
+              "image": "Dodge.png"
+            },
+            {
+              "name": "Charge",
+              "image": "Charge.png"
+            },
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            },
+            {
+              "name": "Armor",
+              "image": "Armor.png"
+            },
+            {
+              "name": "Disarmed",
+              "image": "Disarmed.png"
+            },
+            {
+              "name": "Taunt",
+              "image": "Taunt.png"
+            },
+            {
+              "name": "Transparency",
+              "image": "Transparency.png"
+            },
+            {
+              "name": "Candy",
+              "image": "Candy.png"
+            },
+            {
+              "name": "Wanted",
+              "image": "Wanted.png"
+            },
+            {
+              "name": "Darkspawn",
+              "image": "Darkspawn.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 677,
+      "name": "Sans Milk",
+      "changes": {
+        "description": {
+          "before": "Give a monster +1 Dodge.",
+          "after": "Give a monster +1 ATK/+1 HP and +1 Dodge."
+        }
+      }
+    },
+    {
+      "id": 699,
+      "name": "Wereform",
+      "changes": {
+        "cost": {
+          "before": 5,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 729,
+      "name": "Book Register",
+      "changes": {
+        "description": {
+          "before": "Magic: If you have a non-TOKEN spell from a different SOUL in your hand, deal 3 DMG to a monster.",
+          "after": "Magic: If you have a non-TOKEN spell from another SOUL in your hand, deal 3 DMG to a monster."
+        }
+      }
+    },
+    {
+      "id": 735,
+      "name": "Judgement",
+      "changes": {
+        "cost": {
+          "before": 11,
+          "after": 10
+        }
+      }
+    },
+    {
+      "id": 738,
+      "name": "Petrification",
+      "changes": {
+        "cost": {
+          "before": 8,
+          "after": 7
+        }
+      }
+    },
+    {
+      "id": 755,
+      "name": "Spamton Poster",
+      "changes": {
+        "cost": {
+          "before": 6,
+          "after": 3
+        },
+        "health": {
+          "before": 4,
+          "after": 3
+        },
+        "description": {
+          "before": "Magic: Draw a spell. Shock: Add Hyperlink Blocked to the enemy deck equal to the spell's COST.",
+          "after": "Magic: Draw a spell. Shock: Add Hyperlink Blocked to your opponent's deck."
+        }
+      }
+    },
+    {
+      "id": 764,
+      "name": "Swatchling",
+      "changes": {
+        "health": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 794,
+      "name": "GIGA Queen",
+      "changes": {
+        "cost": {
+          "before": 8,
+          "after": 7
+        },
+        "attack": {
+          "before": 5,
+          "after": 4
+        },
+        "health": {
+          "before": 5,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 805,
+      "name": "Yandereplane",
+      "changes": {
+        "cost": {
+          "before": 7,
+          "after": 6
+        },
+        "description": {
+          "before": "Haste. Delay: If this didn't attack, die and deal 3 DMG to all enemies.",
+          "after": "Haste. Delay: If this didn't attack, die and deal 3 DMG to all enemy monsters."
+        }
+      }
+    },
+    {
+      "id": 850,
+      "name": "Mines Sign",
+      "changes": {
+        "description": {
+          "before": "Turn end: Add a Mine to the enemy deck.",
+          "after": "Turn end: Add a Explosion to the enemy deck."
+        }
+      }
+    },
+    {
+      "id": 867,
+      "name": "Organ Piano",
+      "changes": {
+        "description": {
+          "before": "Taunt. Dust: Add a Lightning Bolt to your hand.",
+          "after": "Taunt. Dust: Add a 1-COST Lightning Bolt to your hand."
+        }
+      }
+    },
+    {
+      "id": 871,
+      "name": "Ice-E",
+      "changes": {
+        "description": {
+          "before": "Magic: Paralyze a monster. If it was an ally monster costing 2+ GOLD, summon 2 Ice.",
+          "after": "Magic: Paralyze a monster. If it's an ally monster costing 2+ GOLD, summon 2 Ice."
+        }
+      }
+    },
+    {
+      "id": 878,
+      "name": "Ceroba Ketsukane",
+      "changes": {
+        "cost": {
+          "before": 12,
+          "after": 13
+        },
+        "health": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 879,
+      "name": "Golden Mirror",
+      "changes": {
+        "attack": {
+          "before": 3,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 899,
+      "name": "Friendogeny",
+      "changes": {
+        "tribes": {
+          "before": [
+            "Dog",
+            "Amalgamate"
+          ],
+          "after": [
+            "Amalgamate",
+            "Dog"
+          ]
+        }
+      }
+    },
+    {
+      "id": 922,
+      "name": "Cooler Cooler",
+      "changes": {
+        "description": {
+          "before": "Shock: Deal 1 DMG to this to summon a Mizzle.",
+          "after": "Shock: Deal 2 DMG to this to summon a Mizzle."
+        }
+      }
+    },
+    {
+      "id": 936,
+      "name": "Black Knife",
+      "changes": {
+        "description": {
+          "before": "Turbo: Erase this and draw a card. Deal 6 DMG randomly split among all ally monsters. Take any DMG not dealt.",
+          "after": "Turbo: Erase this and draw a card. Deal 4 DMG randomly split among all ally monsters. Take any DMG not dealt."
+        }
+      }
+    },
+    {
+      "id": 941,
+      "name": "Jogboy Papyrus",
+      "changes": {
+        "description": {
+          "before": "Magic: Enchant all enemy slots with Blue Bones.",
+          "after": "Haste. Magic: Enchant all enemy slots with Blue Bones."
+        },
+        "statuses": {
+          "before": [],
+          "after": [
+            {
+              "name": "Haste",
+              "image": "Haste.png"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 946,
+      "name": "Tall Bloxer",
+      "changes": {
+        "description": {
+          "before": "Magic: Summon 3 random non-TOKEN monsters costing 3 or less GOLD from your dustpile.",
+          "after": "Magic: Summon 3 unique non-TOKEN monsters costing 3 or less GOLD from your dustpile and give them Haste."
+        }
+      }
+    },
+    {
+      "id": 947,
+      "name": "Wild Revolver",
+      "changes": {
+        "cost": {
+          "before": 4,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 951,
+      "name": "Fire Fountain",
+      "changes": {
+        "attack": {
+          "before": 5,
+          "after": 6
+        }
+      }
+    },
+    {
+      "id": 952,
+      "name": "Miss Mizzle",
+      "changes": {
+        "cost": {
+          "before": 7,
+          "after": 8
+        },
+        "attack": {
+          "before": 4,
+          "after": 5
+        },
+        "health": {
+          "before": 8,
+          "after": 7
+        },
+        "description": {
+          "before": "Haste. Monsters heal 2 more HP to allies. Magic and Dust: Add a Mizzle to your hand.",
+          "after": "Haste. Monsters heal 2 more HP to allies. Magic and Dust: Summon a 1 ATK/1 HP Mizzle."
+        }
+      }
+    },
+    {
+      "id": 953,
+      "name": "Maus Hand",
+      "changes": {
+        "cost": {
+          "before": 4,
+          "after": 3
+        },
+        "attack": {
+          "before": 4,
+          "after": 3
+        },
+        "health": {
+          "before": 4,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 954,
+      "name": "Violetta",
+      "changes": {
+        "cost": {
+          "before": 5,
+          "after": 3
+        },
+        "attack": {
+          "before": 4,
+          "after": 3
+        },
+        "health": {
+          "before": 4,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 955,
+      "name": "Hammer of Justice",
+      "changes": {
+        "cost": {
+          "before": 11,
+          "after": 10
+        },
+        "health": {
+          "before": 5,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 965,
+      "name": "Blue",
+      "changes": {
+        "attack": {
+          "before": 5,
+          "after": 4
+        },
+        "description": {
+          "before": "Transparency. Need: You spent 8+ GOLD on other cards this turn. Magic: Summon 3 Blue Roses.",
+          "after": "Transparency. Need: You spent 8+ GOLD on other cards this turn. Magic: Summon 3 Blue Roses. Add any not summoned to your hand with +1 ATK/+1 HP and Haste."
+        }
+      }
+    },
+    {
+      "id": 968,
+      "name": "Cherry Tree",
+      "changes": {
+        "description": {
+          "before": "Turn start: Give yourself +2 HP.",
+          "after": "Turn start: Give yourself +3 HP."
+        }
+      }
+    },
+    {
+      "id": 972,
+      "name": "Terakota",
+      "changes": {
+        "cost": {
+          "before": 10,
+          "after": 9
+        },
+        "health": {
+          "before": 7,
+          "after": 6
+        },
+        "tribes": {
+          "before": [],
+          "after": [
+            "Plant"
+          ]
+        }
+      }
+    },
+    {
+      "id": 974,
+      "name": "Mr Butterfly",
+      "changes": {
+        "description": {
+          "before": "Need: You played a card costing 6+ GOLD this turn. Magic: Summon a Blue Rose.",
+          "after": "Need: You played another card costing 6+ GOLD this turn. Magic: Summon a Blue Rose."
+        }
+      }
+    },
+    {
+      "id": 976,
+      "name": "Leafling",
+      "changes": {
+        "health": {
+          "before": 3,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 982,
+      "name": "Yellow",
+      "changes": {
+        "cost": {
+          "before": 7,
+          "after": 6
+        },
+        "health": {
+          "before": 4,
+          "after": 3
+        },
+        "description": {
+          "before": "Need: You've killed 2+ monsters this turn with spells or effects. Magic: Add a Quick Draw with Loop (2) to your hand.",
+          "after": "Need: 2+ monsters were killed by spells or effects this turn. Magic: Add a Quick Draw with Loop (2) to your hand."
+        }
+      }
+    },
+    {
+      "id": 983,
+      "name": "Our OMEGA!",
+      "changes": {
+        "description": {
+          "before": "Look at Aqua, Seth, Green, Yellow, Blue and Orange. Add one to your hand. Delay: Send it from your hand to your deck.",
+          "after": "Look at Aqua, Seth, Green, Yellow, Blue, and Orange. Add one to your hand with -1 COST/+1 ATK/+1 HP. Delay: Send it from your hand to your deck."
+        }
+      }
+    },
+    {
+      "id": 984,
+      "name": "Terakota Archer",
+      "changes": {
+        "tribes": {
+          "before": [],
+          "after": [
+            "Plant"
+          ]
+        }
+      }
+    },
+    {
+      "id": 987,
+      "name": "Spikery",
+      "changes": {
+        "cost": {
+          "before": 4,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 988,
+      "name": "Wind Struggler",
+      "changes": {
+        "description": {
+          "before": "All other monsters take +1 DMG.",
+          "after": "All monsters take +1 DMG."
+        }
+      }
+    },
+    {
+      "id": 990,
+      "name": "Kawkaw",
+      "changes": {
+        "description": {
+          "before": "Magic: Give an ally monster +1 ATK/+2 HP and Paralyze it.",
+          "after": "Magic: Give a monster +1 ATK/+3 HP and Paralyze it."
+        }
+      }
+    },
+    {
+      "id": 991,
+      "name": "Raincoat Spider",
+      "changes": {
+        "cost": {
+          "before": 2,
+          "after": 3
+        },
+        "health": {
+          "before": 3,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 992,
+      "name": "Ice-E Banner",
+      "changes": {
+        "attack": {
+          "before": 4,
+          "after": 3
+        },
+        "health": {
+          "before": 4,
+          "after": 3
+        },
+        "description": {
+          "before": "Magic: Silence a monster. Then Paralyze it, give it KR, and make it Wanted.",
+          "after": "Magic: Silence a monster. Then Paralyze it, give it KR, +1 Mold Spore, and make it Wanted."
+        }
+      }
+    }
+  ],
+  "changedAssets": [
+    "assets/cards/Dress_Lion.png",
+    "assets/cards/Undyne.png",
+    "assets/powers/Armor.png",
+    "assets/powers/Bullseye.png",
+    "assets/powers/Candy.png",
+    "assets/powers/Charge.png",
+    "assets/powers/Dodge.png",
+    "assets/powers/Haste.png",
+    "assets/powers/KR.png",
+    "assets/powers/Loop.png",
+    "assets/powers/Shock.png",
+    "assets/powers/Taunt.png",
+    "assets/powers/Transparency.png"
+  ]
+}

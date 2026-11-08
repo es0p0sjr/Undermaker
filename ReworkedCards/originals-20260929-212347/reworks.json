@@ -1,0 +1,321 @@
+[
+  {
+    "card": {
+      "id": 222,
+      "name": "Blue Snail",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "description": "Magic: Next snail you play costs 1 less",
+      "rarity": "COMMON",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Blue_Snail.png",
+      "statuses": [],
+      "tribes": [
+        "Snail"
+      ],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Blue Snail.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 777,
+      "name": "Dog Slots",
+      "cost": 7,
+      "attack": 7,
+      "health": 7,
+      "description": "Magic: You and the opponent excavate the top card of your decks. Call Higher or Lower in cost. If you are correct draw a card. Repeat until you lose or your hand is full",
+      "rarity": "LEGENDARY",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Dog_Slots.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Dog Slots.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 532,
+      "name": "Easy to Draw Bed",
+      "cost": 5,
+      "attack": 4,
+      "health": 6,
+      "description": "After this attacks swap it with a monster in your hand with less cost than this. It becomes a 4/6",
+      "rarity": "RARE",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Easy_to_Draw_Bed.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Easy to Draw Bed.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 148,
+      "name": "Faun",
+      "cost": 4,
+      "attack": 4,
+      "health": 4,
+      "description": "Magic: Give an enemy monster -2 ATK. Draw a card with Cost equal to its new ATK.",
+      "rarity": "COMMON",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Faun.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Faun.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 219,
+      "name": "Gerson",
+      "cost": 7,
+      "attack": 3,
+      "health": 6,
+      "description": "Armor Magic: Equip a random Gerson's Artifact",
+      "rarity": "LEGENDARY",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Gerson.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Gerson.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 925,
+      "name": "Guei",
+      "cost": 6,
+      "attack": 6,
+      "health": 5,
+      "description": "Magic: Summon a Dust creature from your dustpile with cost <4 and kill it",
+      "rarity": "RARE",
+      "extension": "DELTARUNE",
+      "type": "MONSTER",
+      "image": "Guei.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Guei.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 246,
+      "name": "Lady Garf",
+      "cost": 4,
+      "attack": 3,
+      "health": 5,
+      "description": "Magic: Look at the bottom 5 cards of your deck. Draw one of them",
+      "rarity": "RARE",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Lady_Garf.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Lady Garf.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 185,
+      "name": "Librarian",
+      "cost": 5,
+      "attack": 4,
+      "health": 4,
+      "description": "Need: Your deck has less than 5 cards. Magic: Draw 3 cards, then shuffle 4 random non DT cards from your dustpile into your deck",
+      "rarity": "RARE",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Librarian.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Librarian.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 873,
+      "name": "Mo",
+      "cost": 6,
+      "attack": 4,
+      "health": 5,
+      "description": "Magic: Earn 8G. Delay: Lose 8 G, If you spent G on your turn your opponent also gains that much gold.",
+      "rarity": "EPIC",
+      "extension": "UTY",
+      "type": "MONSTER",
+      "image": "Mo.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Mo.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 273,
+      "name": "Noelle",
+      "cost": 4,
+      "attack": 3,
+      "health": 3,
+      "description": "Magic: Look at EPIC spells of your SOUL. Add one to your hand. Your next spell costs -2",
+      "rarity": "LEGENDARY",
+      "extension": "DELTARUNE",
+      "type": "MONSTER",
+      "image": "Noelle.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Noelle.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 290,
+      "name": "Snowy",
+      "cost": 6,
+      "attack": 5,
+      "health": 6,
+      "description": "Magic: Deal 2 damage. If the target dies add 2 Change of Winds to your hand",
+      "rarity": "RARE",
+      "extension": "DELTARUNE",
+      "type": "MONSTER",
+      "image": "Snowy.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Snowy.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 505,
+      "name": "Soulless Kris",
+      "cost": 9,
+      "attack": 4,
+      "health": 10,
+      "description": "Magic: equip the Dark World and Erase your dustpile",
+      "rarity": "DETERMINATION",
+      "extension": "DELTARUNE",
+      "type": "MONSTER",
+      "image": "Soulless_Kris.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Soulless Kris.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 139,
+      "name": "Trader Temmie",
+      "cost": 3,
+      "attack": 3,
+      "health": 3,
+      "description": "Delay: Add a Temmie 2 to your hand. Shock: Trigger this card's Delay.",
+      "rarity": "EPIC",
+      "extension": "BASE",
+      "type": "MONSTER",
+      "image": "Trader_Temmie.png",
+      "statuses": [],
+      "tribes": [
+        "Tem"
+      ],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Trader Temmie.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 776,
+      "name": "Traffic Light",
+      "cost": 6,
+      "attack": 3,
+      "health": 6,
+      "description": "Magic: Equip the Green Light, Yellow Light and Red Light Artifacts. Then all of them gain +1 counter",
+      "rarity": "RARE",
+      "extension": "DELTARUNE",
+      "type": "MONSTER",
+      "image": "Traffic_Light.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Traffic Light.png",
+    "reviewed": false
+  },
+  {
+    "card": {
+      "id": 830,
+      "name": "Well",
+      "cost": 4,
+      "attack": 4,
+      "health": 5,
+      "description": "Turn end: Program (3) Add a Undertale Yellow Legendary from your dustpile to your hand",
+      "rarity": "COMMON",
+      "extension": "UTY",
+      "type": "MONSTER",
+      "image": "Well.png",
+      "statuses": [],
+      "tribes": [],
+      "soul": "",
+      "issues": [],
+      "artworkCached": true
+    },
+    "reference": "Well.png",
+    "reviewed": false
+  }
+]

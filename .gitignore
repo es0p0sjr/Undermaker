@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+data/
+output/
+research/
+.browser-test/
+.go-cache/
+.build/
+.test-data/
+dist/
+snapshot-backups/
+.data.ucsync.lock
+node_modules/
+.env
+.env.*
+!.env.example

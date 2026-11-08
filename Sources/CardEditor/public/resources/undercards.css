@@ -1,0 +1,138 @@
+td, th {
+    padding: 0;
+}
+
+/* Undercards styling */
+@font-face {
+    font-family: 'DTM-Mono';
+    src: url('./DTM-Mono.otf') format('truetype');
+}
+
+.cardBoard {
+    margin: auto;
+    border: 2px solid #fff;
+    width: 160px;
+    height: 220px;
+    table-layout: fixed;
+    position: relative;
+    float: left;
+}
+
+.cardBoard td {
+    border: 2px solid #fff;
+}
+
+.cardBoard .name {
+    width: 120px !important; 
+    height: 20px !important;  
+    background-color: #000;
+    padding-left: 5px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.cardBoard .cost {
+    width: 40px !important;
+    height: 20px !important;
+    text-align: center;
+    background-color: #000;
+    font-size: 20px;
+    color: #00b8ff;
+}
+
+.cardBoard .image {
+    width: 160px;
+    height: 90px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    background-color: #000;
+}
+
+.cardBoard .image img {
+    /*width: 100%;*/
+    height: 100%;
+    margin:0px;
+    padding:0px;
+
+}
+
+.cardBoard .description {
+    width: 160px;
+    height: 82px !important;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    background-color: #000;
+    font-size: 12px;
+}
+
+.cardBoard td.attack {
+    width: 40px !important;
+    height: 30px !important;
+    text-align: center;
+    color: red;
+    background-color: #000;
+    font-size: 20px;
+    z-index: 3;
+}
+
+.cardBoard td.health {
+    width: 40px !important;
+    height: 30px !important;
+    text-align: center;
+    color: #66cc00;
+    background-color: #000;
+    font-size: 20px;
+}
+
+.cardBoard .rarity {
+    width:80px !important;
+    height:30px !important;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #000;
+}
+
+.smallIcon, .smallerIcon {
+    margin: 2px;
+}
+
+.smallIcon {
+    max-height: 16px;
+    max-width: 16px;
+}
+
+.smallerIcon, .cardBoard .smallerIcon {
+    max-height: 14px;
+    max-width: 14px;
+}
+
+.cardBoard img.tribe {
+    width: unset;
+    height: unset;
+    position: absolute;
+    max-height: 16px;
+    max-width: 16px;
+    z-index: 3;
+    right: 4px;
+}
+
+.cardBoard .tribe {
+    top: 100px;
+}
+
+.cardBoard .tribe.none {
+    opacity: 0.1;
+    max-height: 14px;
+    max-width: 14px;
+}
+
+.tribe.none:hover {
+    display: unset;
+    opacity: 1;
+}
+
+.cardBoard .tribe.tippy-active {
+    opacity: 1;
+}

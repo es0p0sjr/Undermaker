@@ -1,0 +1,5 @@
+{
+  "name": "uc-print",
+  "private": true,
+  "scripts": {"build": "node scripts/build.mjs", "test": "node tests/renderer-data.mjs && node tests/browser-assets.mjs && node tests/browser-capture.mjs && node tests/renderer-tribes.mjs && node tests/snapshot-update.mjs"}
+}

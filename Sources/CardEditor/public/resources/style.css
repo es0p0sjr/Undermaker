@@ -1,0 +1,342 @@
+* {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.center-v {
+    display: flex;
+    align-items: center;
+}
+
+.center-h {
+    display: flex;
+    justify-content: center;
+}
+
+body > footer {
+    position: fixed;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    border: 1px solid;
+    padding: 5px 0;
+    margin: auto;
+    width: 242px;
+    text-align: center;
+    background-color: black;
+    cursor: default;
+    border-radius: 30px;
+}
+
+.transparent {
+    opacity: 0.3;
+    z-index: 1000;
+}
+.transparent:hover {
+    opacity: 1;
+}
+
+a, a:visited {
+    color: white;
+}
+
+.cardWrapper {
+    display: inline-table;
+    border: 2px solid black;
+    background: black;
+}
+
+.cardBoard, .cardBoard * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cardBoard {
+    font-family: 'DTM-Mono';
+    border-spacing: 0;
+    display: inline-table;
+    border-collapse: collapse;
+    font-size: 14px;
+    max-width: 160px;
+    line-height: 1.42857143;
+    background: #000;
+}
+.cardBoard .name {
+    white-space: nowrap;
+}
+.cardBoard .cost {
+    max-width: 36px;
+}
+
+.cardBoard img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.cardBoard input, .group header input {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    text-align: inherit;
+}
+
+.group header input {
+    width: initial;
+}
+
+.edit > span {
+    width: 100%;
+    display: block;
+    cursor: text;
+}
+
+span + input, div + textarea {
+    display: none;
+}
+
+span[style*="display: none;"] + input, div[style*="display: none;"] + textarea {
+    display: block;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.image input {
+    display: none;
+}
+
+.cardBoard .description {
+    max-height: 82px;
+}
+
+.description div {
+    max-height: 82px;
+}
+
+.description textarea {
+    border: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    background: inherit;
+    color: inherit;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    resize: none;
+    overflow: hidden;
+}
+
+.group header {
+    position: sticky;
+    top: 0px;
+    border: 2px solid #fff;
+    padding: 0 10px;
+    z-index: 50;
+    background-color: black;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.cardWrapper .footer {
+    display: none;
+    font-size: 13px;
+    text-align: center;
+    font-family: initial;
+}
+
+.context { background-color: #F4F4F4; margin: 10px; color: #333; border: 1px dashed #000; position: absolute; z-index: 20; text-align: center; border-radius: 10px; display: none; }
+.context li {  list-style: none; margin: 0; padding: 3px; border-top: 1px solid #CCC; cursor: pointer; }
+.context li:hover { background-color: #003366; color: #F2F2F2; }
+.context > :first-child { border-top: none; border-radius: 10px 10px 0 0; }
+.context > :last-child { border-radius: 0 0 10px 10px; }
+
+.cardBoard input[type=number]::-webkit-outer-spin-button,
+.cardBoard input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cardBoard input[type=number] {
+    -moz-appearance: textfield;
+}
+
+@media only screen and (max-width: 640px) {
+    .cardWrapper .footer {
+        font-size: 11px;
+    }
+}
+
+.tipTemplate, .template {
+    display: none;
+}
+
+.tippy-tooltip {
+    max-width: 200px;
+    font-size: 13px;
+}
+@media only screen and (max-width: 640px) {
+    .cards {
+        justify-content: space-between;
+    }
+    .tippy-tooltip {
+        width: 200px;
+    }
+}
+
+.tippy-tooltip[data-size=small] {
+    width: calc(158px - .8rem);
+}
+.tippy-tooltip h2 {
+    margin: 5px 0;
+    border-bottom: 1px solid black;
+    font-size: 14px;
+}
+
+.tippy-content h2 + div > span::after {
+    content: ',';
+}
+
+.tippy-content h2 + div > span:last-child::after {
+    content: '';
+}
+
+.tippy-tooltip.black-theme {
+    background-color: #000;
+    border: 2px solid #FFF;
+    width: 150px;
+}
+
+.tippy-tooltip.black-theme h2 {
+    border-bottom-color: #fff;
+}
+
+.extra {
+    display: none;
+}
+
+.showExtras .extra {
+    display: initial;
+}
+
+.sidebar > * {
+    position: relative;
+    cursor: pointer;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 26px;
+    display: inline-block;
+}
+
+.sidebar > *:hover > * {
+    filter: drop-shadow(0px 3px 2px orange);
+    -webkit-filter: drop-shadow(0px 3px 2px orange);
+}
+
+.sidebar img {
+    max-width: 18px;
+}
+
+.group-name, .group-name + input {
+    flex: 1;
+    cursor: text;
+    padding: 6px 0;
+}
+
+.sidebar .material-icons {
+    font-size: 18px;
+}
+
+.group.sortmode .sort {
+    filter: drop-shadow(0px 3px 2px red);
+    -webkit-filter: drop-shadow(0px 3px 2px red);
+}
+
+.group {
+    margin-bottom: 40px;
+}
+
+.pending {
+    display: none;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 50px;
+}
+
+.cards:empty {
+    width: 100%;
+}
+
+/* DnD */
+.dragging {
+    opacity: 0.25;
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+    -ms-transform:scale(0.5);
+    transform:scale(0.5);
+}
+
+.draggable-mirror {
+    z-index: 2000;
+    opacity: 0.8;
+}
+
+.cards[tabindex]:not(.draggable-container--over):focus {
+    outline: none;
+}
+
+.cards.draggable-container--over {
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+/* Saving */
+.group.saving {
+    margin: 0;
+    background-color: #000;
+}
+
+.group.saving .cards {
+    justify-content: initial;
+    min-height: initial;
+}
+
+.saving .no-save {
+    display: none;
+}
+
+.cardWrapper.saving .footer {
+    display: table-footer-group;
+}
+
+@media only screen and (min-width: 640px) {
+    .group.saving, .group.saving .cards {
+        width: fit-content;
+    }
+}
+
+.editor-wrapper {
+    z-index: 100;
+}
+
+img.social {
+    width: 16px;
+    vertical-align: middle;
+}
